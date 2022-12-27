@@ -6,11 +6,10 @@ controllers:
 index:
     path: /
     controller: App\Controller\TestController::index
-test:
-    path: /test/{departement}
-    controller: App\Controller\TestController::test
-    defaults:
-        departement: 0
-    requirements :
-        departement : \d+
-        #methods : [POST]
+#test:
+    #path: /test/{departement}
+    #controller: App\Controller\TestController::test
+    #defaults:
+    #    departement: 0
+    #requirements :
+    #    departement : \d+

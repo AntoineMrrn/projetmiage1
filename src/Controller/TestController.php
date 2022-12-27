@@ -7,6 +7,11 @@ use Symfony\Component\HttpFoundation\Response;
 
 class TestController
 {
+
+    /**
+     *@Route("/test/{departement<\d+>?0}" , name="test", methods={"GET","POST"})
+     */
+
     function index()
     {
         dd("Ca fonctionne page index");
