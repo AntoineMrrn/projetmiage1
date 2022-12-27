@@ -13,4 +13,4 @@ test:
         departement: 0
     requirements :
         departement : \d+
-        #methods : [POST]
+        methods : [POST]
