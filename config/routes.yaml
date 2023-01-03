@@ -7,12 +7,12 @@ index:
     path: /
     controller: App\Controller\TestController::index
 test:
-    path: /test/{dept}
+    path: /test/{departement}
     controller: App\Controller\TestController::test
     defaults:
         departement: 0
     requirements:
         departement: \d+
-bien:
-    path: /bien/
+bienimmo:
+    path: /bienimmo/
     controller: App\Frais\BienImmo::affichePrix

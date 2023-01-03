@@ -8,11 +8,18 @@ use Twig\Environment;
 
 class Calculatrice
 {
+    protected $taux;
+
+    public function __construct(float $taux)
+    {
+        $this->taux = $taux;
+    }
     public function calcul(float $prix)
     {
-        return $prix * 1.1;
+        return $prix * $this->taux;
     }
 }
+
 
 class BienImmo
 {
