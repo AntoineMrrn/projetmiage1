@@ -1,0 +1,18 @@
+{# Template général de la page #}
+{% extends 'base.html.twig' %}
+{# Titre de la page #}
+{% block title %}
+  Mon titre
+{% endblock %}
+{# Ici vous mettez vos codes HTML et balises Twig au besoin #}
+{% block body %}
+  <h2>
+    Nos biens à la vente
+  </h2>
+  {% include '_bien.html.twig' with {
+    bien: bien1
+  } %}
+  {% include '_bien.html.twig' with {
+    bien: bien2
+  } %}
+{% endblock %}

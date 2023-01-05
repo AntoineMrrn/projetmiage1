@@ -5,7 +5,7 @@
 # https://symfony.com/doc/current/best_practices.html#use-parameters-for-application-configuration
 parameters:
 
-services:
+services:   
     # default configuration for services in *this* file
     _defaults:
         autowire: true # Automatically injects dependencies in your services.
@@ -21,5 +21,10 @@ services:
     App\Frais\Calculatrice:
         arguments:
             $taux: 10
+    App\Controller\HelloController:
+        arguments: ['@twig']
     # add more service definitions when explicit configuration is needed
+    twig:
+        class: Twig\Environment
+        arguments: ['@twig.loader']
     # please note that last definitions always *replace* previous ones

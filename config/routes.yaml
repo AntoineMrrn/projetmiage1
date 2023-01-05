@@ -3,8 +3,9 @@ controllers:
         path: ../src/Controller/
         namespace: App\Controller
     type: attribute
+#TP1
 index:
-    path: /
+    path: /premiertest
     controller: App\Controller\TestController::index
 test:
     path: /test/{departement}
@@ -13,6 +14,21 @@ test:
         departement: 0
     requirements:
         departement: \d+
-bienimmo:
-    path: /bienimmo/
-    controller: App\Frais\BienImmo::affichePrix
+
+#TP2
+hello:
+    path: /hello/{prenom}/{department}
+    controller: App\Controller\HelloController::hello
+    defaults:
+        prenom: Personne
+        department: 0
+    requirements:
+        department: \d+
+hello2:
+    path: /hello2/{prenom}
+    controller: App\Controller\HelloController2::hello2
+
+#Projet
+homepage:
+    path: /
+    controller: App\Controller\HomeController::index
