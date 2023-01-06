@@ -22,12 +22,12 @@ class AccueilController extends AbstractController
         $cr = $em->getRepository(Categorie::class);
 
         //création de bien
-        $categorie= new Categorie();
-        $categorie->setNom('Exploitation');
-        $em->persist($categorie);
-        $em->flush();
+        //$categorie= new Categorie();
+        //$categorie->setNom('TerrainAgricole');
+        //$em->persist($categorie);
+        //$em->flush();
 
-        dd($categorie);
+        //dd($categorie);
         /*
         //création de bien
         $bien = new Bien();
