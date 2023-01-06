@@ -5,13 +5,20 @@ namespace App\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Psr\Log\LoggerInterface;
+use App\Repository\BienRepository;
 
-class TestController
+class TestController extends AbstractController
 {
     function index()
     {
         dd("Ca fonctionne");
+    }
+
+    public function accueil(BienRepository $bienRepository)
+    {
+        dd($bienRepository->count([]));
     }
 
     /**
