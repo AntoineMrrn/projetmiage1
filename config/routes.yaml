@@ -3,7 +3,8 @@ controllers:
         path: ../src/Controller/
         namespace: App\Controller
     type: attribute
-#TP1
+#---------- TP1 ----------#
+
 premiertest:
     path: /premiertest
     controller: App\Controller\TestController::accueil
@@ -15,7 +16,8 @@ test:
     requirements:
         departement: \d+
 
-#TP2
+#---------- TP2 ----------#
+
 hello:
     path: /hello/{prenom}/{department}
     controller: App\Controller\HelloController::hello
@@ -28,16 +30,41 @@ hello2:
     path: /hello2/{prenom}
     controller: App\Controller\HelloController2::hello2
 
-#Projet
+#---------- Projet ----------#
+
 accueil:
     path: /
     controller: App\Controller\AccueilController::accueil
 homepage:
     path: /homepage
     controller: App\Controller\HomeController::index
+
+#---------- Gestion des biens et des catégories ----------#
+
 addbien:
     path: /agence/bien/add
-    controller: App\Controller\BienController::add
+    controller: App\Controller\BienController::addbien
 addcategorie:
     path: /agence/categorie/add
-    controller: App\Controller\BienController::addcategorie
+    controller: App\Controller\CategorieController::addcategorie
+
+modifbien:
+    path: /agence/bien/modif/{id}
+    controller: App\Controller\BienController::modifbien
+    defaults:
+        id: 0
+modifcategorie:
+    path: /agence/categorie/modif/{id}
+    controller: App\Controller\CategorieController::modifcategorie
+    defaults:
+        id: 0
+supprbien:
+    path: /agence/bien/suppr/{id}
+    controller: App\Controller\BienController::supprbien
+    defaults:
+        id: 0
+supprcategorie:
+    path: /agence/categorie/suppr/{id}
+    controller: App\Controller\CategorieController::supprcategorie
+    defaults:
+        id: 0

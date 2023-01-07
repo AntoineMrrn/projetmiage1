@@ -19,12 +19,11 @@ class AccueilController extends AbstractController
      */
     public function accueil(EntityManagerInterface $em)
     {
-
-
-
         $br = $em->getRepository(Bien::class);
         $cr = $em->getRepository(Categorie::class);
 
+        /*
+        //find les categories
         $categories = [];
         $categories = $cr->findAll();
 
@@ -32,33 +31,46 @@ class AccueilController extends AbstractController
             $categories[] = $category->getNomCategorie();
         }
 
-        //dd($categories);
+        dd($categories);
+        */
+
+        /*
         //création de catégorie
 
-        //$categorie = new Categorie();
-        //$categorie ->setNomCategorie('Exploitation');
+        $categorie = new Categorie();
+        $categorie ->setNomCategorie('Exploitation');
 
-        //$em->persist($categories);
+        $em->persist($categorie);
         $em->flush();
+
         dd($categories);
+        */
 
-
+        /*
         //création de bien
-        //$bien = new Bien();
-        //$bien->setTitre('Maison moderne');
-        //$bien->setUrl('Maison-moderne1');
-        //$bien->setCp(75000);
-        //$bien->setPrix(400000);
+        $bien = new Bien();
+        $bien->setTitre('Maison ancienne');
+        $bien->setUrl('Maison-ancienne10');
+        $bien->setCp(35420);
+        $bien->setPrix(75000);
+        $bien->setVille("Monthault");
+        $bien->setDescription("ancienne maison a vendre");
+        $bien->setSurface(160);
 
-        //$em->persist($bien);
-        //$em->flush();
+        $em->persist($bien);
+        $em->flush();
+
+        dd("bien ajouté!" . $bien);
+        */
 
         //chercher bien 2 puis // modifier son code postal
 
-        //$bienSET = $br->find(2);
-        //$bienSET->setcp('87777');
-        //$em->flush();
-        //dd($bienSET);
+        $bienSET = $br->find(8);
+        $bienSET->setcp('999');
+        $em->persist($bienSET);
+        $em->flush();
+        
+        dd("bien modifié!");
 
 
         //return $this->render('home.html.twig');

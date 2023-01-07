@@ -4,10 +4,20 @@
 {% block title %}
   Mon titre
 {% endblock %}
+
+{% block stylesheets %}
+  <link href="https://bootswatch.com/4/lumen/bootstrap.min.css"
+    rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+    rel="stylesheet" />
+{% endblock %}
+
 {# Ici vous mettez vos codes HTML et balises Twig au besoin #}
 {% block body %}
+
+    {% include 'shared/_header.html.twig' %}
   <h2>
-    Nos biens à la vente
+    Bonjour {{prenom}} Nos biens à la vente
   </h2>
   {% include '_bien.html.twig' with {
     bien: bien1

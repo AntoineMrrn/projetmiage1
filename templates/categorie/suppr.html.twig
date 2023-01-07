@@ -1,0 +1,21 @@
+{# Template général de la page #}
+{% extends 'base.html.twig' %}
+{% block stylesheets %}
+	<link href="https://bootswatch.com/4/lumen/bootstrap.min.css" rel="stylesheet"/>
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" rel="stylesheet"/>
+{% endblock %}
+
+{% block body %}
+	{% include 'shared/_header.html.twig' %}
+	<h1>SUPP UN cate / num 
+		{{ id }}
+	</h1>
+	<div class="row">
+		<div class="col"> Le formulaire est ici. </div>
+		<div class="col">
+			<button type="submit">
+				Supprimer un bien
+			</button>
+		</div>
+	</div>
+{% endblock %}
