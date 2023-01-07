@@ -10,6 +10,7 @@ use Doctrine\ORM\EntityManagerInterface;
 use Twig\Environment;
 use App\Entity\Bien;
 use App\Entity\Categorie;
+use Symfony\Component\Form\Forms;
 
 class AccueilController extends AbstractController
 {
@@ -18,6 +19,9 @@ class AccueilController extends AbstractController
      */
     public function accueil(EntityManagerInterface $em)
     {
+
+
+        
         $br = $em->getRepository(Bien::class);
         $cr = $em->getRepository(Categorie::class);
 
@@ -48,7 +52,7 @@ class AccueilController extends AbstractController
         dd($bienSET);
         */
 
-        //return $this->render('home.html.twig');
+        return $this->render('home.html.twig');
     }
 }
 

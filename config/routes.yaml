@@ -35,3 +35,6 @@ accueil:
 homepage:
     path: /homepage
     controller: App\Controller\HomeController::index
+add:
+    path: /agence/bien/add
+    controller: App\Controller\BienController::add
