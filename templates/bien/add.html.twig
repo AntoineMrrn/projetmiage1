@@ -1,8 +1,30 @@
+{# Template général de la page #}
 {% extends 'base.html.twig' %}
-{% block title %}
-  Formulaire
-{% endblock %}
+
 {% block body %}
-  <h1> Welcome to ADD!</h1>
-  <p> Voici le formulaire :  </p>
+
+	<div class="row">
+		<div class="col">
+			{{form_start(formView)}}
+            {% form_theme formView 'bootstrap_4_layout.html.twig' %}
+			{{form_row(formView.nom)}}
+			{{form_row(formView.description)}}
+			{{form_row(formView.prix)}}
+			{{form_row(formView.categorie)}}
+		</div>
+		<div class="col">
+			<button type="submit">
+				Créer un bien
+			</button>
+			{{form_end(formView)}}
+		</div>
+	</div>
+
+	<h1>Ajouter un bien</h1>
+
+	{{form_start(formView)}}
+	<button type="submit">
+		Créer un bien
+	</button>
+	{{form_end(formView)}}
 {% endblock %}

@@ -32,11 +32,11 @@ class Bien
     #[ORM\Column(type: Types::TEXT)]
     private ?string $description = null;
 
-    #[ORM\Column]
-    private ?int $surfacem2 = null;
-
     #[ORM\ManyToOne(inversedBy: 'biens')]
     private ?Categorie $categorie = null;
+
+    #[ORM\Column]
+    private ?int $surface = null;
 
     public function getId(): ?int
     {
@@ -115,18 +115,6 @@ class Bien
         return $this;
     }
 
-    public function getSurfacem2(): ?int
-    {
-        return $this->surfacem2;
-    }
-
-    public function setSurfacem2(int $surfacem2): self
-    {
-        $this->surfacem2 = $surfacem2;
-
-        return $this;
-    }
-
     public function getCategorie(): ?Categorie
     {
         return $this->categorie;
@@ -135,6 +123,18 @@ class Bien
     public function setCategorie(?Categorie $categorie): self
     {
         $this->categorie = $categorie;
+
+        return $this;
+    }
+
+    public function getSurface(): ?int
+    {
+        return $this->surface;
+    }
+
+    public function setSurface(int $surface): self
+    {
+        $this->surface = $surface;
 
         return $this;
     }

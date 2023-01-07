@@ -18,11 +18,6 @@ services:
             - "../src/DependencyInjection/"
             - "../src/Entity/"
             - "../src/Kernel.php"
-    App\Frais\Calculatrice:
-        arguments:
-            $taux: 10
-    App\Controller\HelloController:
-        arguments: ['@twig']
     # add more service definitions when explicit configuration is needed
     twig:
         class: Twig\Environment

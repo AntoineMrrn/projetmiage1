@@ -4,7 +4,7 @@ controllers:
         namespace: App\Controller
     type: attribute
 #TP1
-index:
+premiertest:
     path: /premiertest
     controller: App\Controller\TestController::accueil
 test:
@@ -35,6 +35,9 @@ accueil:
 homepage:
     path: /homepage
     controller: App\Controller\HomeController::index
-add:
+addbien:
     path: /agence/bien/add
     controller: App\Controller\BienController::add
+addcategorie:
+    path: /agence/categorie/add
+    controller: App\Controller\BienController::addcategorie
