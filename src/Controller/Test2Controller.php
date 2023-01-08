@@ -50,7 +50,6 @@ class Test2Controller extends AbstractController
         //création de bien
         $bien = new Bien();
         $bien->setTitre('Maison ancienne');
-        $bien->setUrl('Maison-ancienne10');
         $bien->setCp(35420);
         $bien->setPrix(75000);
         $bien->setVille("Monthault");

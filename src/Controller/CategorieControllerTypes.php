@@ -57,19 +57,29 @@ class CategorieControllerTypes extends AbstractController
         $biens_surface = $br->findby(['categorie' => 1]);
 
         foreach ($biens_surface as $bien) {
-            $liste_biens_surfaces[] = $bien->getSurface();
+            $liste_biens_surface[] = $bien->getSurface();
         }
+
+        // Récupère le titre, le prix et la surface des biens de la catégorie 1
+        /*
+        $biens_données = [];
+        $biens_données = $br->findby(['categorie' => 1]);
+
+        foreach ($biens_données as $bien) {
+            $liste_biens_données[] = $bien->getTitre();
+            $liste_biens_données[] = $bien->getPrix();
+            $liste_biens_données[] = $bien->getSurface();
+        }
+        */
 
         // Récupère la catégorie ayant l'ID 1
         $nomcategorie1 = $cr->find(1);
 
         // Renvoie la réponse contenant le rendu de la vue "categorie/pagecategorie.html.twig" et les données passées à la vue
-        return $this->render('categorie/pagecategorie.html.twig', [
+        return $this->render('categorie/pagecategorie2.html.twig', [
             'nom_categorie' => $nomcategorie1->getNomCategorie(),
 
-            'liste_bien_titre' => $liste_biens_titre,
-            'liste_bien_prix' => $liste_biens_prix,
-            'liste_bien_surface' => $liste_biens_surfaces,
+            'liste_biens' => ['titre' => $liste_biens_titre, 'prix' => $liste_biens_prix, 'surface' => $liste_biens_surface],
         ]);
     }
 
@@ -84,6 +94,15 @@ class CategorieControllerTypes extends AbstractController
         // Récupère le repository de Categorie et Bien
         $cr = $em->getRepository(Categorie::class);
         $br = $em->getRepository(Bien::class);
+
+        // Récupère l'id des biens de la catégorie 2
+        $biens_id = [];
+        $biens_id = $br->findby(['categorie' => 2]);
+
+        foreach ($biens_id as $bien) {
+            $liste_biens_id[] = $bien->getId();
+        }
+
 
         // Récupère le titre des biens de la catégorie 2
         $biens_titre = [];
@@ -106,7 +125,7 @@ class CategorieControllerTypes extends AbstractController
         $biens_surface = $br->findby(['categorie' => 2]);
 
         foreach ($biens_surface as $bien) {
-            $liste_biens_surfaces[] = $bien->getSurface();
+            $liste_biens_surface[] = $bien->getSurface();
         }
 
         // Récupère la catégorie ayant l'ID 2
@@ -116,9 +135,7 @@ class CategorieControllerTypes extends AbstractController
         return $this->render('categorie/pagecategorie.html.twig', [
             'nom_categorie' => $nomcategorie2->getNomCategorie(),
 
-            'liste_bien_titre' => $liste_biens_titre,
-            'liste_bien_prix' => $liste_biens_prix,
-            'liste_bien_surface' => $liste_biens_surfaces,
+            'liste_biens' => ['titre' => $liste_biens_titre, 'prix' => $liste_biens_prix, 'surface' => $liste_biens_surface],
         ]);
     }
 
@@ -155,7 +172,7 @@ class CategorieControllerTypes extends AbstractController
         $biens_surface = $br->findby(['categorie' => 3]);
 
         foreach ($biens_surface as $bien) {
-            $liste_biens_surfaces[] = $bien->getSurface();
+            $liste_biens_surface[] = $bien->getSurface();
         }
 
         // Récupère la catégorie ayant l'ID 3
@@ -165,9 +182,7 @@ class CategorieControllerTypes extends AbstractController
         return $this->render('categorie/pagecategorie.html.twig', [
             'nom_categorie' => $nomcategorie3->getNomCategorie(),
 
-            'liste_bien_titre' => $liste_biens_titre,
-            'liste_bien_prix' => $liste_biens_prix,
-            'liste_bien_surface' => $liste_biens_surfaces,
+            'liste_biens' => ['titre' => $liste_biens_titre, 'prix' => $liste_biens_prix, 'surface' => $liste_biens_surface],
         ]);
     }
 
@@ -204,7 +219,7 @@ class CategorieControllerTypes extends AbstractController
         $biens_surface = $br->findby(['categorie' => 4]);
 
         foreach ($biens_surface as $bien) {
-            $liste_biens_surfaces[] = $bien->getSurface();
+            $liste_biens_surface[] = $bien->getSurface();
         }
 
 
@@ -215,9 +230,7 @@ class CategorieControllerTypes extends AbstractController
         return $this->render('categorie/pagecategorie.html.twig', [
             'nom_categorie' => $nomcategorie4->getNomCategorie(),
 
-            'liste_bien_titre' => $liste_biens_titre,
-            'liste_bien_prix' => $liste_biens_prix,
-            'liste_bien_surface' => $liste_biens_surfaces,
+            'liste_biens' => ['titre' => $liste_biens_titre, 'prix' => $liste_biens_prix, 'surface' => $liste_biens_surface],
         ]);
     }
 
@@ -254,7 +267,7 @@ class CategorieControllerTypes extends AbstractController
         $biens_surface = $br->findby(['categorie' => 5]);
 
         foreach ($biens_surface as $bien) {
-            $liste_biens_surfaces[] = $bien->getSurface();
+            $liste_biens_surface[] = $bien->getSurface();
         }
 
         // Récupère la catégorie ayant l'ID 5
@@ -264,9 +277,7 @@ class CategorieControllerTypes extends AbstractController
         return $this->render('categorie/pagecategorie.html.twig', [
             'nom_categorie' => $nomcategorie5->getNomCategorie(),
 
-            'liste_bien_titre' => $liste_biens_titre,
-            'liste_bien_prix' => $liste_biens_prix,
-            'liste_bien_surface' => $liste_biens_surfaces,
+            'liste_biens' => ['titre' => $liste_biens_titre, 'prix' => $liste_biens_prix, 'surface' => $liste_biens_surface],
         ]);
     }
 }

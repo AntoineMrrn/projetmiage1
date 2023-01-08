@@ -14,6 +14,7 @@
 
 	{% include 'shared/_header.html.twig' %}
 	<div style="background-color : black">
+
 		<div class="container bg-light">
 			<hr/><hr/><hr/><hr/>
 
@@ -34,29 +35,62 @@
 			</div>
 
 			<div class="container bg-light">
+
 				<div class="row">
-					{% for bien in liste_bien_titre %}
-						<div class="col-4">
-							<h4>{{ bien }}</h4>
+					<div class="col">
+						<div class="card">
+							{% for id in liste_biens.id %}
+								<div class="col-4">
+									<h4>Id du bien :{{ id }}</h4>
+								</div>
+							{% endfor %}
 						</div>
-					{% endfor %}
+					</div>
 				</div>
+				
 				<div class="row">
-					{% for bien in liste_bien_prix %}
-						<div class="col-4">
-							<h4>{{ bien }}</h4>
+					<div class="col">
+						<div class="card">
+							{% for titre in liste_biens.titre %}
+								<div class="col-4">
+									<h4>Titre du bien :{{ titre }}</h4>
+								</div>
+							{% endfor %}
 						</div>
-					{% endfor %}
+					</div>
 				</div>
+
 				<div class="row">
-					{% for bien in liste_bien_surface %}
-						<div class="col-4">
-							<h4>{{ bien }}</h4>
+					<div class="col">
+						<div class="card">
+							{% for prix in liste_biens.prix %}
+								<div class="col-4">
+									<h4>Prix :
+										{{ prix }}
+										€</h4>
+								</div>
+							{% endfor %}
 						</div>
-					{% endfor %}
+					</div>
 				</div>
+
+				<div class="row">
+					<div class="col">
+						<div class="card">
+							{% for surface in liste_biens.surface %}
+								<div class="col-4">
+									<h4>Surface (en m2) :
+										{{ surface }}</h4>
+								</div>
+							{% endfor %}
+						</div>
+					</div>
+				</div>
+
 			</div>
+
 		</div>
+
 	</div>
 
 {% endblock %}

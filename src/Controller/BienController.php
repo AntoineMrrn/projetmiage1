@@ -42,8 +42,7 @@ class BienController extends AbstractController
             ->add('surface', IntegerType::class, ['required' => false, 'label' => 'Surface en km² du bien ', 'attr' => ['class' => 'formcontrol', 'placeholder' => 'Tapez une surface en km² pour ce bien']])
             ->add('reference', TextAreaType::class, ['required' => false, 'label' => 'Réference du bien ', 'attr' => ['class' => 'formcontrol', 'placeholder' => 'Tapez une réference pour ce bien']])
             ->add('type', TextAreaType::class, ['required' => false, 'label' => 'Type du bien ', 'attr' => ['class' => 'formcontrol', 'placeholder' => 'Tapez un type (location, vente...) pour ce bien']])
-            ->add('localisation', TextAreaType::class, ['required' => false, 'label' => 'Localisation du bien ', 'attr' => ['class' => 'formcontrol', 'placeholder' => 'Tapez une localisation pour ce bien']])
-            ->add('url', TextType::class, ['required' => false, 'label' => 'Url du bien ', 'attr' => ['class' => 'formcontrol', 'placeholder' => 'Tapez une url pour ce bien']]);
+            ->add('localisation', TextAreaType::class, ['required' => false, 'label' => 'Localisation du bien ', 'attr' => ['class' => 'formcontrol', 'placeholder' => 'Tapez une localisation pour ce bien']]);
 
         $formView = $form->createView();
 
@@ -62,7 +61,6 @@ class BienController extends AbstractController
             $b->setReference($data->getReference());
             $b->setType($data->getType());
             $b->setLocalisation($data->getLocalisation());
-            $b->setUrl($data->getUrl());
 
             $em->persist($b);
 
@@ -95,8 +93,7 @@ class BienController extends AbstractController
             ->add('surface', IntegerType::class, ['required' => false, 'label' => 'Surface en km² du bien ', 'attr' => ['class' => 'formcontrol', 'placeholder' => 'Tapez une surface en km² pour ce bien']])
             ->add('reference', TextAreaType::class, ['required' => false, 'label' => 'Réference du bien ', 'attr' => ['class' => 'formcontrol', 'placeholder' => 'Tapez une réference pour ce bien']])
             ->add('type', TextAreaType::class, ['required' => false, 'label' => 'Type du bien ', 'attr' => ['class' => 'formcontrol', 'placeholder' => 'Tapez un type (location, vente...) pour ce bien']])
-            ->add('localisation', TextAreaType::class, ['required' => false, 'label' => 'Localisation du bien ', 'attr' => ['class' => 'formcontrol', 'placeholder' => 'Tapez une localisation pour ce bien']])
-            ->add('url', TextType::class, ['required' => false, 'label' => 'Url du bien ', 'attr' => ['class' => 'formcontrol', 'placeholder' => 'Tapez une url pour ce bien']]);
+            ->add('localisation', TextAreaType::class, ['required' => false, 'label' => 'Localisation du bien ', 'attr' => ['class' => 'formcontrol', 'placeholder' => 'Tapez une localisation pour ce bien']]);
 
         $formView = $form->createView();
 
@@ -115,7 +112,6 @@ class BienController extends AbstractController
             $b->setSurface($data->getSurface());
             $b->setType($data->getType());
             $b->setLocalisation($data->getLocalisation());
-            $b->setUrl($data->getUrl());
 
             $em->persist($b);
 

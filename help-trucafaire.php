@@ -60,3 +60,129 @@ dd($categoriesfinish);
 'liste_bien_cat5_titre' => $biensCAT5Finish_titre,
 'liste_bien_cat5_prix' => $biensCAT5Finish_prix,
 'liste_bien_cat5_surface' => $biensCAT5Finish_surface,
+
+
+<hr/>
+
+<p>Titre Biens :</p>
+<ul>
+    {% for bien in liste_bien_cat5_titre %}
+        <li>{{ bien }}</li>
+    {% endfor %}
+</ul>
+
+<p>Prix Biens :</p>
+<ul>
+    {% for bien in liste_bien_cat5_prix %}
+        <li>{{ bien }}</li>
+    {% endfor %}
+</ul>
+
+<p>Surface Biens :</p>
+<ul>
+    {% for bien in liste_bien_cat5_surface %}
+        <li>{{ bien }}</li>
+    {% endfor %}
+</ul>
+
+<div class="card bg-dark text-white text-center">
+					<div class="class-body">
+						<div class="row">
+							<div class="col">
+								<img src="https://picsum.photos/200/400" class="img-fluid" alt=""/>
+								<div class="card-body">
+									<h4 class="card-title">
+										Magnifique maison
+										<i class=""></i>
+									</h4>
+									<p class="card-text">
+										description du biennnnnn
+									</p>
+									<a href="/hello" class="btn btn-primary btn-sn">Détails</a>
+									<a href="#" class="btn btn-success btn-sn">Ajouter</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				------------------------- login page -----------
+
+				<div class="main">
+		<div class="register">
+			<div class="col_1_of_list span_1_of_list login-left">
+				<h3>Nouveau membre</h3>
+				<p>En créant un compte, vous pourrez avoir plus de fonctionnalités tel que mettre en favoris des annonces.</p>
+				<a class="acount-btn" href="sinscrire.php">Créer un compte</a>
+			</div>
+			<div class="col_1_of_list span_1_of_list login-right">
+				<h3>Déjà membre ?</h3>
+				<p>Si vous avez déjà un compte, merci de vous connecter</p>
+				<form action="connexion.php" method="POST">
+					<div>
+						<span>Adresse email<label>*</label>
+						</span>
+						<input type="text" name="email" id="logemail">
+					</div>
+					<div>
+						<span>Mot de passe<label>*</label>
+						</span>
+						<input type="password" name="mdp" id="logpwd">
+					</div>
+					<a class="forgot" href="mdp_oublie.php">Mot de passe oublié</a>
+					<input type="submit" value="Login">
+				</form>
+			</div>
+			<div class="clearfix"></div>
+		</div>
+		<div class="clear"></div>
+	</div>
+
+	--------------- isncrption page --------
+
+	<div class="main">
+     <div class="register">
+		  	  <form  action="inscription.php" method="POST" id="sinscrire">
+				 <div class="register-top-grid">
+					<h3>Vos informations</h3>
+					 <div>
+						<span>Prénom<label>*</label></span>
+						<input onKeyUp="checknom()" type="text" name="prenom" id="prenom"> 
+						<span id="erreurprenom"></span>
+					 </div>
+					 <div>
+						<span>Nom<label>*</label></span>
+						<input type="text" name="nom" id="insnom"> 
+						<span id="erreurnom"></span>
+					 </div>
+					 <div>
+						 <span>Email<label>*</label></span>
+						 <input type="email" name="email" id="insemail"> 
+						 <span id="erreurmail"></span>
+					 </div>
+					 <div class="clear"> </div>
+					     <a class="news-letter" href="#">
+						 <label class="checkbox"><input type="checkbox" name="newsletter" checked="checked" id="insnewsletter"><i> </i>S'inscrire à la newsletter</label>
+					   </a>
+					 </div>
+				     <div class="register-bottom-grid">
+						    <h3>Pour vous authentifier</h3>
+							 <div>
+								<span>Password<label>*</label></span>
+								<input type="password" name="mdp" id="insmdp">
+								<span id="erreurmdp"></span>
+							 </div>
+							 <div>
+								<span>Retapez votre Password<label>*</label></span>
+								<input type="password" name="mdp2" id="insmdp2">
+								<span id="erreurmdp2"></span>
+							 </div>
+							 <div class="clear"> </div>
+					 </div>
+				<div class="clear"> </div>
+				<div class="register-but">
+					   <input type="submit" value="M'inscrire">
+					   <div class="clear"> </div>
+				   </form>
+				</div>
+		   </div>
