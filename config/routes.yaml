@@ -28,7 +28,14 @@ hello:
         department: \d+
 hello2:
     path: /hello2/{prenom}
-    controller: App\Controller\HelloController2::hello2
+    controller: App\Controller\HelloController::hello2
+    defaults:
+        prenom: Personne
+accueiltest:
+    path: /accueiltest/{prenom}
+    controller: App\Controller\Test2Controller::accueiltest
+    defaults:
+        prenom: Personne
 
 #---------- Projet ----------#
 

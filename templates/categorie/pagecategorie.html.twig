@@ -1,0 +1,62 @@
+{# Template général de la page #}
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	{{nom_categorie}}
+{% endblock %}
+
+{% block stylesheets %}
+	<link href="https://bootswatch.com/4/lumen/bootstrap.min.css" rel="stylesheet"/>
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" rel="stylesheet"/>
+{% endblock %}
+
+{% block body %}
+
+	{% include 'shared/_header.html.twig' %}
+	<div style="background-color : black">
+		<div class="container bg-light">
+			<hr/><hr/><hr/><hr/>
+
+			<div class="alert alert-dismissible alert-secondary ">
+				<h1 class="page-section-heading text-center text-uppercase text-black">Vous êtes dans la catégorie
+					<strong>{{nom_categorie}}</strong>
+					!
+				</h1>
+			</div>
+
+			<div class="alert alert-dismissible alert-secondary ">
+				<h3 class="page-section-heading text-center text-uppercase text-black">
+					<i class="fa-solid fa-arrow-down"></i>
+					Vous trouvez ici tout les biens de la catégorie
+					{{nom_categorie}}
+					<i class="fa-solid fa-arrow-down"></i>
+				</h3>
+			</div>
+
+			<div class="container bg-light">
+				<div class="row">
+					{% for bien in liste_bien_titre %}
+						<div class="col-4">
+							<h4>{{ bien }}</h4>
+						</div>
+					{% endfor %}
+				</div>
+				<div class="row">
+					{% for bien in liste_bien_prix %}
+						<div class="col-4">
+							<h4>{{ bien }}</h4>
+						</div>
+					{% endfor %}
+				</div>
+				<div class="row">
+					{% for bien in liste_bien_surface %}
+						<div class="col-4">
+							<h4>{{ bien }}</h4>
+						</div>
+					{% endfor %}
+				</div>
+			</div>
+		</div>
+	</div>
+
+{% endblock %}

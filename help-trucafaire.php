@@ -45,3 +45,18 @@
      </div>
  </div>
 </div>
+
+//afficher toutes les categories
+$categories = [];
+$categories = $cr->findAll();
+
+foreach ($categories as $category) {
+    $categoriesfinish[] = $category->getNomCategorie();
+}
+
+dd($categoriesfinish);
+
+#----
+'liste_bien_cat5_titre' => $biensCAT5Finish_titre,
+'liste_bien_cat5_prix' => $biensCAT5Finish_prix,
+'liste_bien_cat5_surface' => $biensCAT5Finish_surface,

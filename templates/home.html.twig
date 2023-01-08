@@ -29,52 +29,55 @@
 {% endblock %}
 
 {% block body %}
+
 	<body id="page-top">
+
 		{% include 'shared/_header.html.twig' %}
-		<div class="container bg-dark">
-			<div class="card bg-dark text-white text-center">
-				<div class="class-body">
-					<div class="row">
-						<div class="col">
-							<img src="https://picsum.photos/200/400" class="img-fluid" alt=""/>
-							<div class="card-body">
-								<h4 class="card-title">
-									Magnifique maison
-									<i class=""></i>
-								</h4>
-								<p class="card-text">
-									description du biennnnnn
-								</p>
-								<a href="/hello" class="btn btn-primary btn-sn">Détails</a>
-								<a href="#" class="btn btn-success btn-sn">Ajouter</a>
+
+		<hr/><hr/><hr/>
+		<div style="background-color : black">
+			<div class="container bg-dark">
+				<div class="card bg-dark text-white text-center">
+					<div class="class-body">
+						<div class="row">
+							<div class="col">
+								<img src="https://picsum.photos/200/400" class="img-fluid" alt=""/>
+								<div class="card-body">
+									<h4 class="card-title">
+										Magnifique maison
+										<i class=""></i>
+									</h4>
+									<p class="card-text">
+										description du biennnnnn
+									</p>
+									<a href="/hello" class="btn btn-primary btn-sn">Détails</a>
+									<a href="#" class="btn btn-success btn-sn">Ajouter</a>
+								</div>
 							</div>
 						</div>
 					</div>
 				</div>
-			</div>
 
-			<hr/>
+				<hr/>
 
-			<div class="alert alert-dismissible alert-secondary ">
-				<h2 class="page-section-heading text-center text-uppercase text-black">Votre agence de
-					<strong>proximité</strong>
-					!
-					<i class="fas fa-check"></i>
+				<div class="alert alert-dismissible alert-secondary ">
+					<h2 class="page-section-heading text-center text-uppercase text-black">Votre agence de
+						<strong>proximité</strong>
+						!
+						<i class="fas fa-check"></i>
+					</h2>
 				</div>
-			</h2>
 
-			<hr/>
-			{% include 'shared/_about.html.twig' %}
-			<hr/>
+				<hr/>
+				{% include 'shared/_about.html.twig' %}
+				<hr/>
 
-			<div class="row">
-				{% include 'shared/_presentation.html.twig' with {'img' : 'https://f.hellowork.com/edito/sites/3/2021/03/management_proximite-1-1200x628.jpg?v=1657025314', 'icon' : 'fa-sharp fa-solid fa-location-dot', 'text' : 'Proximité'}%}
-				{% include 'shared/_presentation.html.twig' with {'img' : 'https://www.lecoindesentrepreneurs.fr/wp-content/uploads/2020/09/Creer-une-societe-de-conseil.png', 'icon' : 'fa-solid fa-magnifying-glass-plus', 'text' : 'Conseil'}%}
-				{% include 'shared/_presentation.html.twig' with {'img' : 'https://www.netpme.fr/wp-content/uploads/2016/10/1409909964choix_Fotolia_55876265_S-682x403.jpg', 'icon' : 'fa-solid fa-pen', 'text' : 'Choix'}%}
+				<div class="row">
+					{% include 'shared/_presentation.html.twig' with {'img' : 'https://f.hellowork.com/edito/sites/3/2021/03/management_proximite-1-1200x628.jpg?v=1657025314', 'icon' : 'fa-sharp fa-solid fa-location-dot', 'text' : 'Proximité'}%}
+					{% include 'shared/_presentation.html.twig' with {'img' : 'https://www.lecoindesentrepreneurs.fr/wp-content/uploads/2020/09/Creer-une-societe-de-conseil.png', 'icon' : 'fa-solid fa-magnifying-glass-plus', 'text' : 'Conseil'}%}
+					{% include 'shared/_presentation.html.twig' with {'img' : 'https://www.netpme.fr/wp-content/uploads/2016/10/1409909964choix_Fotolia_55876265_S-682x403.jpg', 'icon' : 'fa-solid fa-pen', 'text' : 'Choix'}%}
+				</div>
 			</div>
-      
-			<hr/>
-
 		</div>
 	</body>
 {% endblock %}

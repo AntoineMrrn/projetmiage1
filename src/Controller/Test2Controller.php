@@ -15,9 +15,9 @@ use Symfony\Component\Form\Forms;
 class Test2Controller extends AbstractController
 {
     /**
-     *@Route("/", name="accueil")
+     *@Route("/accueiltest", name="accueiltest")
      */
-    public function accueil(EntityManagerInterface $em)
+    public function accueiltest(EntityManagerInterface $em)
     {
         $br = $em->getRepository(Bien::class);
         $cr = $em->getRepository(Categorie::class);
@@ -63,18 +63,23 @@ class Test2Controller extends AbstractController
         dd("bien ajouté!" . $bien);
         */
 
-        /*
+
         //chercher bien 2 puis // modifier son code postal
 
-        $bienSET = $br->find(8);
-        $bienSET->setcp('999');
-        $em->persist($bienSET);
-        $em->flush();
-        
-        dd("bien modifié!");
-        */
+        $bienSET = $br->find(2);
+        //$bienSET->setcp('999');
+        //$em->persist($bienSET);
+        //$em->flush();
 
-        dd("bien modifié!");
+        //dd($bienSET);
         //return $this->render('home.html.twig');
+
+        return $this->render('hello2.html.twig', [
+            'bien' => [
+                'id' => 234,
+                'ville' => 'Rennes',
+                'prix' => 500000
+            ]
+        ]);
     }
 }

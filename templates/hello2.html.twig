@@ -1,28 +1,31 @@
-{# Template général de la page #}
-{% extends 'base.html.twig' %}
-{# Titre de la page #}
-{% block title %}
-  Mon titre
-{% endblock %}
+<html>
+	<head>
+		<title>
+			Hello Title
+		</title>
+	</head>
 
-{% block stylesheets %}
-  <link href="https://bootswatch.com/4/lumen/bootstrap.min.css"
-    rel="stylesheet" />
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
-    rel="stylesheet" />
-{% endblock %}
+	<body>
+		<h1>
+			Hello , vous êtes dans la catégorie
+			{{nom_categorie}}</h1>
 
-{# Ici vous mettez vos codes HTML et balises Twig au besoin #}
-{% block body %}
-
-    {% include 'shared/_header.html.twig' %}
-  <h2>
-    Bonjour {{prenom}} Nos biens à la vente
-  </h2>
-  {% include '_bien.html.twig' with {
-    bien: bien1
-  } %}
-  {% include '_bien.html.twig' with {
-    bien: bien2
-  } %}
-{% endblock %}
+		<p>Liste Biens :</p>
+		 <ul>
+            {% for title in liste_bien_cat5.titre %}
+                <li>{{ title }}</li>
+            {% endfor %}
+        </ul>
+        <ul>
+            {% for price in liste_bien_cat5.prix %}
+                <li>Prix: {{ price }}</li>
+            {% endfor %}
+        </ul>
+        <ul>
+            {% for surface in liste_bien_cat5.surface %}
+                <li>Surface: {{ surface }}</li>
+            {% endfor %}
+        </ul>
+		
+	</body>
+</html>
