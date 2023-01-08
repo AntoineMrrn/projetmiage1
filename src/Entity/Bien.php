@@ -20,14 +20,8 @@ class Bien
     #[ORM\Column]
     private ?int $prix = null;
 
-    #[ORM\Column(length: 250)]
-    private ?string $url = null;
-
     #[ORM\Column]
     private ?int $cp = null;
-
-    #[ORM\Column(length: 255)]
-    private ?string $ville = null;
 
     #[ORM\Column(type: Types::TEXT)]
     private ?string $description = null;
@@ -37,6 +31,18 @@ class Bien
 
     #[ORM\Column]
     private ?int $surface = null;
+
+    #[ORM\Column(length: 50)]
+    private ?string $Reference = null;
+
+    #[ORM\Column(length: 20)]
+    private ?string $type = null;
+
+    #[ORM\Column(length: 120)]
+    private ?string $localisation = null;
+
+    #[ORM\Column(length: 255)]
+    private ?string $url = null;
 
     public function getId(): ?int
     {
@@ -67,18 +73,6 @@ class Bien
         return $this;
     }
 
-    public function getUrl(): ?string
-    {
-        return $this->url;
-    }
-
-    public function setUrl(string $url): self
-    {
-        $this->url = $url;
-
-        return $this;
-    }
-
     public function getCp(): ?int
     {
         return $this->cp;
@@ -87,18 +81,6 @@ class Bien
     public function setCp(int $cp): self
     {
         $this->cp = $cp;
-
-        return $this;
-    }
-
-    public function getVille(): ?string
-    {
-        return $this->ville;
-    }
-
-    public function setVille(string $ville): self
-    {
-        $this->ville = $ville;
 
         return $this;
     }
@@ -135,6 +117,54 @@ class Bien
     public function setSurface(int $surface): self
     {
         $this->surface = $surface;
+
+        return $this;
+    }
+
+    public function getReference(): ?string
+    {
+        return $this->Reference;
+    }
+
+    public function setReference(string $Reference): self
+    {
+        $this->Reference = $Reference;
+
+        return $this;
+    }
+
+    public function getType(): ?string
+    {
+        return $this->type;
+    }
+
+    public function setType(string $type): self
+    {
+        $this->type = $type;
+
+        return $this;
+    }
+
+    public function getLocalisation(): ?string
+    {
+        return $this->localisation;
+    }
+
+    public function setLocalisation(string $localisation): self
+    {
+        $this->localisation = $localisation;
+
+        return $this;
+    }
+
+    public function getUrl(): ?string
+    {
+        return $this->url;
+    }
+
+    public function setUrl(string $url): self
+    {
+        $this->url = $url;
 
         return $this;
     }

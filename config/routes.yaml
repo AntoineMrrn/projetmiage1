@@ -68,3 +68,33 @@ supprcategorie:
     controller: App\Controller\CategorieController::supprcategorie
     defaults:
         id: 0
+
+#---------- Logins ----------#
+
+login:
+    path: /login9
+    controller: App\Controller\LoginController9::login
+
+#---------- Catégories ----------#
+
+bien:
+    path: /bien/{id}
+    controller: App\Controller\BienController::bien
+
+#---------- Catégories ----------#
+
+batiment:
+    path: /categorie/batiment
+    controller: App\Controller\CategorieControllerTypes::batiment
+bois:
+    path: /categorie/bois
+    controller: App\Controller\CategorieControllerTypes::bois
+exploitation:
+    path: /categorie/exploitation
+    controller: App\Controller\CategorieControllerTypes::exploitation
+prairie:
+    path: /categorie/prairie
+    controller: App\Controller\CategorieControllerTypes::prairie
+terrainagricole:
+    path: /categorie/terrainagricole
+    controller: App\Controller\CategorieControllerTypes::terrainagricole

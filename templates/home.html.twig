@@ -1,57 +1,80 @@
 {% extends 'base.html.twig' %}
 {% block title %}
-  Accueil Agence Alpha
+	Accueil Agence Alpha
 {% endblock %}
+
 {% block stylesheets %}
-  <link href="https://bootswatch.com/4/lumen/bootstrap.min.css"
-    rel="stylesheet" />
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
-    rel="stylesheet" />
+
+	<head>
+		<meta charset="utf-8"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+		<meta name="description" content=""/>
+		<meta
+		name="author" content=""/>
+		<!-- Favicon-->
+		<link
+		rel="icon" type="image/x-icon" href="assets/favicon.ico"/>
+		<!-- Font Awesome icons (free version)-->
+		<script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
+		<!-- Google fonts-->
+		<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css"/>
+		<link
+		href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css"/>
+		<!-- Core theme CSS (includes Bootstrap)-->
+		<link href="css/styles.css" rel="stylesheet"/>
+	</head>
+
+	<link href="https://bootswatch.com/4/lumen/bootstrap.min.css" rel="stylesheet"/>
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" rel="stylesheet"/>
 {% endblock %}
 
 {% block body %}
-  <div class="container">
-    <h1>
-      Accueil
-    </h1>
-    {% include 'shared/_presentation.html.twig' %}
+	<body id="page-top">
+		{% include 'shared/_header.html.twig' %}
+		<div class="container bg-dark">
+			<div class="card bg-dark text-white text-center">
+				<div class="class-body">
+					<div class="row">
+						<div class="col">
+							<img src="https://picsum.photos/200/400" class="img-fluid" alt=""/>
+							<div class="card-body">
+								<h4 class="card-title">
+									Magnifique maison
+									<i class=""></i>
+								</h4>
+								<p class="card-text">
+									description du biennnnnn
+								</p>
+								<a href="/hello" class="btn btn-primary btn-sn">Détails</a>
+								<a href="#" class="btn btn-success btn-sn">Ajouter</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
 
-    <div class="card bg-primary text-white text-center">
-      <div class="class-body">
-        <div class="row">
-          <div class="col">
-            <img src="https://picsum.photos/200/400" class="img-fluid" alt="" />
-            <div class="card-body">
-              <h4 class="card-title">
-                Magnifique maison <i class="fa-solid fa-magnifying-glass-plus"></i>
-              </h4>
-              <p class="card-text">
-                description du biennnnnn
-              </p>
-              <a href="#" class="btn btn-primary btn-sn">Détails</a>
-              <a href="#" class="btn btn-success btn-sn">Ajouter</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+			<hr/>
 
-    <hr />
-    <h2>
-      Votre agence de proximité <i class="fas fa-check"></i>
-    </h2>
-    <p>
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis euismod
-      velit sed odio dignissim mollis. Nulla a molestie quam, ut sagittis augue.
-      Aliquam erat volutpat. Vivamus tellus justo, congue ac auctor semper,
-      sodales in risus. Fusce et fringilla erat. Nullam ultricies suscipit
-      sodales.
-    </p>
+			<div class="alert alert-dismissible alert-secondary ">
+				<h2 class="page-section-heading text-center text-uppercase text-black">Votre agence de
+					<strong>proximité</strong>
+					!
+					<i class="fas fa-check"></i>
+				</div>
+			</h2>
 
-    <div class="card-text">
-      <p>
-        Ceci est un paragraphe
-      </p>
-    </div>
-  </div>
+			<hr/>
+			{% include 'shared/_about.html.twig' %}
+			<hr/>
+
+			<div class="row">
+				{% include 'shared/_presentation.html.twig' with {'img' : 'https://f.hellowork.com/edito/sites/3/2021/03/management_proximite-1-1200x628.jpg?v=1657025314', 'icon' : 'fa-sharp fa-solid fa-location-dot', 'text' : 'Proximité'}%}
+				{% include 'shared/_presentation.html.twig' with {'img' : 'https://www.lecoindesentrepreneurs.fr/wp-content/uploads/2020/09/Creer-une-societe-de-conseil.png', 'icon' : 'fa-solid fa-magnifying-glass-plus', 'text' : 'Conseil'}%}
+				{% include 'shared/_presentation.html.twig' with {'img' : 'https://www.netpme.fr/wp-content/uploads/2016/10/1409909964choix_Fotolia_55876265_S-682x403.jpg', 'icon' : 'fa-solid fa-pen', 'text' : 'Choix'}%}
+			</div>
+      
+			<hr/>
+
+		</div>
+	</body>
 {% endblock %}

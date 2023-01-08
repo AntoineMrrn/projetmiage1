@@ -37,11 +37,13 @@ class BienController extends AbstractController
         $form->add('titre', TextType::class, ['required' => true, 'label' => 'Titre du bien *', 'attr' => ['class' => 'formcontrol', 'placeholder' => 'Tapez un titre pour ce bien']])
             ->add('prix', IntegerType::class, ['required' => true, 'label' => 'Prix du bien en euro (€) *', 'attr' => ['class' => 'formcontrol', 'placeholder' => 'Tapez un prix pour ce bien']])
             ->add('cp', IntegerType::class, ['required' => true, 'label' => 'Code postal du bien *', 'attr' => ['class' => 'formcontrol', 'placeholder' => 'Tapez un code postal pour ce bien']])
+            ->add('description', TextAreaType::class, ['required' => false, 'label' => 'Description du bien ', 'attr' => ['class' => 'formcontrol', 'placeholder' => 'Tapez une description pour ce bien']])
             ->add('categorie', EntityType::class, ['required' => true, 'label' => 'Catégorie du bien *', 'class' => Categorie::class, 'choice_label' => 'nom_categorie'])
             ->add('surface', IntegerType::class, ['required' => false, 'label' => 'Surface en km² du bien ', 'attr' => ['class' => 'formcontrol', 'placeholder' => 'Tapez une surface en km² pour ce bien']])
-            ->add('url', TextType::class, ['required' => false, 'label' => 'Url du bien ', 'attr' => ['class' => 'formcontrol', 'placeholder' => 'Tapez une url pour ce bien']])
-            ->add('ville', TextAreaType::class, ['required' => false, 'label' => 'Ville du bien ', 'attr' => ['class' => 'formcontrol', 'placeholder' => 'Tapez une localisation pour ce bien']])
-            ->add('description', TextAreaType::class, ['required' => false, 'label' => 'Description du bien ', 'attr' => ['class' => 'formcontrol', 'placeholder' => 'Tapez une description pour ce bien']]);
+            ->add('reference', TextAreaType::class, ['required' => false, 'label' => 'Réference du bien ', 'attr' => ['class' => 'formcontrol', 'placeholder' => 'Tapez une réference pour ce bien']])
+            ->add('type', TextAreaType::class, ['required' => false, 'label' => 'Type du bien ', 'attr' => ['class' => 'formcontrol', 'placeholder' => 'Tapez un type (location, vente...) pour ce bien']])
+            ->add('localisation', TextAreaType::class, ['required' => false, 'label' => 'Localisation du bien ', 'attr' => ['class' => 'formcontrol', 'placeholder' => 'Tapez une localisation pour ce bien']])
+            ->add('url', TextType::class, ['required' => false, 'label' => 'Url du bien ', 'attr' => ['class' => 'formcontrol', 'placeholder' => 'Tapez une url pour ce bien']]);
 
         $formView = $form->createView();
 
@@ -54,11 +56,13 @@ class BienController extends AbstractController
             $b->setTitre($data->getTitre());
             $b->setPrix($data->getPrix());
             $b->setCp($data->getCp());
+            $b->setDescription($data->getDescription());
             $b->setCategorie($data->getCategorie());
             $b->setSurface($data->getSurface());
+            $b->setReference($data->getReference());
+            $b->setType($data->getType());
+            $b->setLocalisation($data->getLocalisation());
             $b->setUrl($data->getUrl());
-            $b->setVille($data->getLocalisation());
-            $b->setDescription($data->getDescription());
 
             $em->persist($b);
 
@@ -86,11 +90,13 @@ class BienController extends AbstractController
         $form->add('titre', TextType::class, ['required' => true, 'label' => 'Titre du bien *', 'attr' => ['class' => 'formcontrol', 'placeholder' => 'Tapez un titre pour ce bien']])
             ->add('prix', IntegerType::class, ['required' => true, 'label' => 'Prix du bien en euro (€) *', 'attr' => ['class' => 'formcontrol', 'placeholder' => 'Tapez un prix pour ce bien']])
             ->add('cp', IntegerType::class, ['required' => true, 'label' => 'Code postal du bien *', 'attr' => ['class' => 'formcontrol', 'placeholder' => 'Tapez un code postal pour ce bien']])
+            ->add('description', TextAreaType::class, ['required' => false, 'label' => 'Description du bien ', 'attr' => ['class' => 'formcontrol', 'placeholder' => 'Tapez une description pour ce bien']])
             ->add('categorie', EntityType::class, ['required' => true, 'label' => 'Catégorie du bien *', 'class' => Categorie::class, 'choice_label' => 'nom_categorie'])
             ->add('surface', IntegerType::class, ['required' => false, 'label' => 'Surface en km² du bien ', 'attr' => ['class' => 'formcontrol', 'placeholder' => 'Tapez une surface en km² pour ce bien']])
-            ->add('url', TextType::class, ['required' => false, 'label' => 'Url du bien ', 'attr' => ['class' => 'formcontrol', 'placeholder' => 'Tapez une url pour ce bien']])
-            ->add('ville', TextAreaType::class, ['required' => false, 'label' => 'Ville du bien ', 'attr' => ['class' => 'formcontrol', 'placeholder' => 'Tapez une localisation pour ce bien']])
-            ->add('description', TextAreaType::class, ['required' => false, 'label' => 'Description du bien ', 'attr' => ['class' => 'formcontrol', 'placeholder' => 'Tapez une description pour ce bien']]);
+            ->add('reference', TextAreaType::class, ['required' => false, 'label' => 'Réference du bien ', 'attr' => ['class' => 'formcontrol', 'placeholder' => 'Tapez une réference pour ce bien']])
+            ->add('type', TextAreaType::class, ['required' => false, 'label' => 'Type du bien ', 'attr' => ['class' => 'formcontrol', 'placeholder' => 'Tapez un type (location, vente...) pour ce bien']])
+            ->add('localisation', TextAreaType::class, ['required' => false, 'label' => 'Localisation du bien ', 'attr' => ['class' => 'formcontrol', 'placeholder' => 'Tapez une localisation pour ce bien']])
+            ->add('url', TextType::class, ['required' => false, 'label' => 'Url du bien ', 'attr' => ['class' => 'formcontrol', 'placeholder' => 'Tapez une url pour ce bien']]);
 
         $formView = $form->createView();
 
@@ -104,11 +110,12 @@ class BienController extends AbstractController
             $b->setTitre($data->getTitre());
             $b->setPrix($data->getPrix());
             $b->setCp($data->getCp());
+            $b->setDescription($data->getDescription());
             $b->setCategorie($data->getCategorie());
             $b->setSurface($data->getSurface());
+            $b->setType($data->getType());
+            $b->setLocalisation($data->getLocalisation());
             $b->setUrl($data->getUrl());
-            $b->setVille($data->getLocalisation());
-            $b->setDescription($data->getDescription());
 
             $em->persist($b);
 
@@ -132,14 +139,7 @@ class BienController extends AbstractController
         $builder->setMethod('GET');
 
         $form = $builder->getForm();
-        $form->add('titre', TextType::class, ['required' => true, 'label' => 'Titre du bien *', 'attr' => ['class' => 'formcontrol', 'placeholder' => 'Tapez un titre pour ce bien']])
-            ->add('prix', IntegerType::class, ['required' => true, 'label' => 'Prix du bien en euro (€) *', 'attr' => ['class' => 'formcontrol', 'placeholder' => 'Tapez un prix pour ce bien']])
-            ->add('cp', IntegerType::class, ['required' => true, 'label' => 'Code postal du bien *', 'attr' => ['class' => 'formcontrol', 'placeholder' => 'Tapez un code postal pour ce bien']])
-            ->add('categorie', EntityType::class, ['required' => true, 'label' => 'Catégorie du bien *', 'class' => Categorie::class, 'choice_label' => 'nom_categorie'])
-            ->add('surface', IntegerType::class, ['required' => false, 'label' => 'Surface en km² du bien ', 'attr' => ['class' => 'formcontrol', 'placeholder' => 'Tapez une surface en km² pour ce bien']])
-            ->add('url', TextType::class, ['required' => false, 'label' => 'Url du bien ', 'attr' => ['class' => 'formcontrol', 'placeholder' => 'Tapez une url pour ce bien']])
-            ->add('ville', TextAreaType::class, ['required' => false, 'label' => 'Ville du bien ', 'attr' => ['class' => 'formcontrol', 'placeholder' => 'Tapez une localisation pour ce bien']])
-            ->add('description', TextAreaType::class, ['required' => false, 'label' => 'Description du bien ', 'attr' => ['class' => 'formcontrol', 'placeholder' => 'Tapez une description pour ce bien']]);
+        $form->add('titre', TextType::class, ['required' => true, 'label' => 'Titre du bien *', 'attr' => ['class' => 'formcontrol', 'placeholder' => 'Tapez un titre pour ce bien']]);
 
         $formView = $form->createView();
 
