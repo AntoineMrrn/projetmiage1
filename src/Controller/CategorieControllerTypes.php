@@ -27,257 +27,60 @@ class CategorieControllerTypes extends AbstractController
     //------------------------------------------------------------------------------------------------------------------------//
 
     /**
-     * @Route("/categorie/terrainagricole", name="terrainagricole")
+     * @Route("/categorie/{id<\d+>?0}", name="categorie")
      */
 
-    public function terrainagricole(EntityManagerInterface $em)
+    public function categorie(EntityManagerInterface $em, $id)
     {
         // Récupère le repository de Categorie et Bien
         $cr = $em->getRepository(Categorie::class);
         $br = $em->getRepository(Bien::class);
 
-        // Récupère le titre des biens de la catégorie 1
+        // Récupère la catégorie d'id ID
+        $categorie = $cr->find($id);
+        if ($categorie == null) {
+            return $this->render('404.html.twig');
+        }
+        $categorie_id = $categorie->getId();
+
+
+        // Récupère le titre des biens de la catégorie ID
         $biens_titre = [];
-        $biens_titre = $br->findby(['categorie' => 1]);
+        $biens_titre = $br->findby(['categorie' => $id]);
 
         foreach ($biens_titre as $bien) {
             $liste_biens_titre[] = $bien->getTitre();
         }
 
-        // Récupère le prix des biens de la catégorie 1
+        // Récupère le prix des biens de la catégorie ID
         $biens_prix = [];
-        $biens_prix = $br->findby(['categorie' => 1]);
+        $biens_prix = $br->findby(['categorie' => $id]);
 
         foreach ($biens_prix as $bien) {
             $liste_biens_prix[] = $bien->getPrix();
         }
 
-        // Récupère la surface des biens de la catégorie 1
-        $biens_surface = [];
-        $biens_surface = $br->findby(['categorie' => 1]);
-
-        foreach ($biens_surface as $bien) {
-            $liste_biens_surface[] = $bien->getSurface();
-        }
-
-        // Récupère le titre, le prix et la surface des biens de la catégorie 1
-        /*
-        $biens_données = [];
-        $biens_données = $br->findby(['categorie' => 1]);
-
-        foreach ($biens_données as $bien) {
-            $liste_biens_données[] = $bien->getTitre();
-            $liste_biens_données[] = $bien->getPrix();
-            $liste_biens_données[] = $bien->getSurface();
-        }
-        */
-
-        // Récupère la catégorie ayant l'ID 1
-        $nomcategorie1 = $cr->find(1);
-
-        // Renvoie la réponse contenant le rendu de la vue "categorie/pagecategorie.html.twig" et les données passées à la vue
-        return $this->render('categorie/pagecategorie2.html.twig', [
-            'nom_categorie' => $nomcategorie1->getNomCategorie(),
-
-            'liste_biens' => ['titre' => $liste_biens_titre, 'prix' => $liste_biens_prix, 'surface' => $liste_biens_surface],
-        ]);
-    }
-
-    //------------------------------------------------------------------------------------------------------------------------//
-
-    /**
-     * @Route("/categorie/prairie", name="prairie")
-     */
-
-    public function prairie(EntityManagerInterface $em)
-    {
-        // Récupère le repository de Categorie et Bien
-        $cr = $em->getRepository(Categorie::class);
-        $br = $em->getRepository(Bien::class);
-
-        // Récupère l'id des biens de la catégorie 2
+        // Récupère l'id des biens de la catégorie ID
         $biens_id = [];
-        $biens_id = $br->findby(['categorie' => 2]);
+        $biens_id = $br->findby(['categorie' => $id]);
 
         foreach ($biens_id as $bien) {
             $liste_biens_id[] = $bien->getId();
         }
 
+        // Récupère l'id des biens de la catégorie ID
+        $biens = [];
+        $biens = $br->findby(['categorie' => $id]);
 
-        // Récupère le titre des biens de la catégorie 2
-        $biens_titre = [];
-        $biens_titre = $br->findby(['categorie' => 2]);
-
-        foreach ($biens_titre as $bien) {
-            $liste_biens_titre[] = $bien->getTitre();
+        foreach ($biens as $bien) {
+            $biens_données[] = $bien->getTitre();
         }
-
-        // Récupère le prix des biens de la catégorie 2
-        $biens_prix = [];
-        $biens_prix = $br->findby(['categorie' => 2]);
-
-        foreach ($biens_prix as $bien) {
-            $liste_biens_prix[] = $bien->getPrix();
-        }
-
-        // Récupère la surface des biens de la catégorie 2
-        $biens_surface = [];
-        $biens_surface = $br->findby(['categorie' => 2]);
-
-        foreach ($biens_surface as $bien) {
-            $liste_biens_surface[] = $bien->getSurface();
-        }
-
-        // Récupère la catégorie ayant l'ID 2
-        $nomcategorie2 = $cr->find(2);
 
         // Renvoie la réponse contenant le rendu de la vue "categorie/pagecategorie.html.twig" et les données passées à la vue
         return $this->render('categorie/pagecategorie.html.twig', [
-            'nom_categorie' => $nomcategorie2->getNomCategorie(),
+            'nom_categorie' => $categorie->getNomCategorie(),
 
-            'liste_biens' => ['titre' => $liste_biens_titre, 'prix' => $liste_biens_prix, 'surface' => $liste_biens_surface],
-        ]);
-    }
-
-    //------------------------------------------------------------------------------------------------------------------------//
-
-    /**
-     * @Route("/categorie/bois", name="bois")
-     */
-
-    public function bois(EntityManagerInterface $em)
-    {
-        // Récupère le repository de Categorie et Bien
-        $cr = $em->getRepository(Categorie::class);
-        $br = $em->getRepository(Bien::class);
-
-        // Récupère le titre des biens de la catégorie 3
-        $biens_titre = [];
-        $biens_titre = $br->findby(['categorie' => 3]);
-
-        foreach ($biens_titre as $bien) {
-            $liste_biens_titre[] = $bien->getTitre();
-        }
-
-        // Récupère le prix des biens de la catégorie 3
-        $biens_prix = [];
-        $biens_prix = $br->findby(['categorie' => 3]);
-
-        foreach ($biens_prix as $bien) {
-            $liste_biens_prix[] = $bien->getPrix();
-        }
-
-        // Récupère la surface des biens de la catégorie 3
-        $biens_surface = [];
-        $biens_surface = $br->findby(['categorie' => 3]);
-
-        foreach ($biens_surface as $bien) {
-            $liste_biens_surface[] = $bien->getSurface();
-        }
-
-        // Récupère la catégorie ayant l'ID 3
-        $nomcategorie3 = $cr->find(3);
-
-        // Renvoie la réponse contenant le rendu de la vue "categorie/pagecategorie.html.twig" et les données passées à la vue
-        return $this->render('categorie/pagecategorie.html.twig', [
-            'nom_categorie' => $nomcategorie3->getNomCategorie(),
-
-            'liste_biens' => ['titre' => $liste_biens_titre, 'prix' => $liste_biens_prix, 'surface' => $liste_biens_surface],
-        ]);
-    }
-
-    //------------------------------------------------------------------------------------------------------------------------//
-
-    /**
-     * @Route("/categorie/batiment", name="batiment")
-     */
-
-    public function batiment(EntityManagerInterface $em)
-    {
-        // Récupère le repository de Categorie et Bien
-        $cr = $em->getRepository(Categorie::class);
-        $br = $em->getRepository(Bien::class);
-
-        // Récupère le titre des biens de la catégorie 4
-        $biens_titre = [];
-        $biens_titre = $br->findby(['categorie' => 4]);
-
-        foreach ($biens_titre as $bien) {
-            $liste_biens_titre[] = $bien->getTitre();
-        }
-
-        // Récupère le prix des biens de la catégorie 4
-        $biens_prix = [];
-        $biens_prix = $br->findby(['categorie' => 4]);
-
-        foreach ($biens_prix as $bien) {
-            $liste_biens_prix[] = $bien->getPrix();
-        }
-
-        // Récupère la surface des biens de la catégorie 4
-        $biens_surface = [];
-        $biens_surface = $br->findby(['categorie' => 4]);
-
-        foreach ($biens_surface as $bien) {
-            $liste_biens_surface[] = $bien->getSurface();
-        }
-
-
-        // Récupère la catégorie ayant l'ID 4
-        $nomcategorie4 = $cr->find(4);
-
-        // Renvoie la réponse contenant le rendu de la vue "categorie/pagecategorie.html.twig" et les données passées à la vue
-        return $this->render('categorie/pagecategorie.html.twig', [
-            'nom_categorie' => $nomcategorie4->getNomCategorie(),
-
-            'liste_biens' => ['titre' => $liste_biens_titre, 'prix' => $liste_biens_prix, 'surface' => $liste_biens_surface],
-        ]);
-    }
-
-    //------------------------------------------------------------------------------------------------------------------------//
-
-    /**
-     * @Route("/categorie/exploitation", name="exploitation")
-     */
-
-    public function exploitation(EntityManagerInterface $em)
-    {
-        // Récupère le repository de Categorie et Bien
-        $cr = $em->getRepository(Categorie::class);
-        $br = $em->getRepository(Bien::class);
-
-        // Récupère le titre des biens de la catégorie 5
-        $biens_titre = [];
-        $biens_titre = $br->findby(['categorie' => 5]);
-
-        foreach ($biens_titre as $bien) {
-            $liste_biens_titre[] = $bien->getTitre();
-        }
-
-        // Récupère le prix des biens de la catégorie 5
-        $biens_prix = [];
-        $biens_prix = $br->findby(['categorie' => 5]);
-
-        foreach ($biens_prix as $bien) {
-            $liste_biens_prix[] = $bien->getPrix();
-        }
-
-        // Récupère la surface des biens de la catégorie 5
-        $biens_surface = [];
-        $biens_surface = $br->findby(['categorie' => 5]);
-
-        foreach ($biens_surface as $bien) {
-            $liste_biens_surface[] = $bien->getSurface();
-        }
-
-        // Récupère la catégorie ayant l'ID 5
-        $nomcategorie5 = $cr->find(5);
-
-        // Renvoie la réponse contenant le rendu de la vue "categorie/pagecategorie.html.twig" et les données passées à la vue
-        return $this->render('categorie/pagecategorie.html.twig', [
-            'nom_categorie' => $nomcategorie5->getNomCategorie(),
-
-            'liste_biens' => ['titre' => $liste_biens_titre, 'prix' => $liste_biens_prix, 'surface' => $liste_biens_surface],
+            'liste_biens' => ['titre' => $liste_biens_titre, 'prix' => $liste_biens_prix, 'id' => $liste_biens_id],
         ]);
     }
 }

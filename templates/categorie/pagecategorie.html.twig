@@ -13,10 +13,10 @@
 {% block body %}
 
 	{% include 'shared/_header.html.twig' %}
-	<div style="background-color : black">
+	<div style="background-color : white">
 
 		<div class="container bg-light">
-			<hr/><hr/><hr/><hr/>
+
 
 			<div class="alert alert-dismissible alert-secondary ">
 				<h1 class="page-section-heading text-center text-uppercase text-black">Vous êtes dans la catégorie
@@ -36,61 +36,73 @@
 
 			<div class="container bg-light">
 
+				<hr/>
+				<hr/>
+				<hr/>
+
 				<div class="row">
-					<div class="col">
-						<div class="card">
-							{% for id in liste_biens.id %}
-								<div class="col-4">
-									<h4>Id du bien :{{ id }}</h4>
+
+					{% for titre in liste_biens.titre %}
+						<div class="col">
+							<div class="card shadow-sm">
+								<div class="card-body">
+									<p class="card-text">
+										<h5>
+											<strong>Titre du bien</strong>
+											:
+											{{ titre }}</h5>
+									</p>
+									<div class="d-flex justify-content-between align-items-center"></div>
 								</div>
-							{% endfor %}
+							</div>
 						</div>
-					</div>
-				</div>
-				
-				<div class="row">
-					<div class="col">
-						<div class="card">
-							{% for titre in liste_biens.titre %}
-								<div class="col-4">
-									<h4>Titre du bien :{{ titre }}</h4>
-								</div>
-							{% endfor %}
-						</div>
-					</div>
+					{% endfor %}
 				</div>
 
 				<div class="row">
-					<div class="col">
-						<div class="card">
-							{% for prix in liste_biens.prix %}
-								<div class="col-4">
-									<h4>Prix :
-										{{ prix }}
-										€</h4>
+
+					{% for prix in liste_biens.prix %}
+						<div class="col">
+							<div class="card shadow-sm">
+								<div class="card-body">
+									<p class="card-text">
+										<h5>
+											<strong>Prix</strong>
+											:
+											{{ prix }}
+											€</h5>
+									</p>
+									<div class="d-flex justify-content-between align-items-center"></div>
 								</div>
-							{% endfor %}
+							</div>
 						</div>
-					</div>
+					{% endfor %}
+
 				</div>
 
 				<div class="row">
-					<div class="col">
-						<div class="card">
-							{% for surface in liste_biens.surface %}
-								<div class="col-4">
-									<h4>Surface (en m2) :
-										{{ surface }}</h4>
+
+					{% for id in liste_biens.id %}
+						<div class="col">
+							<div class="card shadow-sm">
+								<div class="card-body">
+									<p class="card-text">
+
+										<a class="" href="/bien/{{id}}">
+											<button type="button" class="btn btn-info btn-sm">Details du bien</button>
+										</a>
+
+									</p>
+									<div class="d-flex justify-content-between align-items-center"></div>
 								</div>
-							{% endfor %}
+							</div>
 						</div>
-					</div>
+					{% endfor %}
+
 				</div>
 
 			</div>
 
 		</div>
-
 	</div>
-
 {% endblock %}

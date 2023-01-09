@@ -24,6 +24,47 @@ use Doctrine\ORM\EntityManagerInterface;
 
 class BienController extends AbstractController
 {
+
+    //---------- Page des biens ----------//
+
+    /**
+     * @Route("/bien/{id<\d+>?0}", name="bien")
+     */
+
+    public function bien(FormFactoryInterface $factory, EntityManagerInterface $em, Request $request, $id)
+    {
+        $br = $em->getRepository(Bien::class);
+        $cr = $em->getRepository(Categorie::class);
+
+        // Récupère le prix des biens de la catégorie 2
+        $bien = $br->find($id);
+        if ($bien == null){
+            return $this->render('404.html.twig');
+        }
+        $bien_titre = $bien->getTitre();
+        $bien_prix = $bien->getPrix();
+        $bien_cp = $bien->getCp();
+        $bien_description = $bien->getDescription();
+        $bien_surface = $bien->getSurface();
+        $bien_reference = $bien->getReference();
+        $bien_type = $bien->getType();
+
+        
+
+        return $this->render('bien/bien.html.twig', [
+            'id' => $id,
+            'titre' => $bien_titre,
+            'prix' => $bien_prix,
+            'cp' => $bien_cp,
+            'description' => $bien_description,
+            'surface' => $bien_surface,
+            'reference' => $bien_reference,
+            'type' => $bien_type,
+        ]);
+    }
+
+    //---------- Gestion des biens ---------//
+
     /**
      * @Route("/agence/bien/add", name="addbien")
      */

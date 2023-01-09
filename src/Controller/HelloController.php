@@ -74,13 +74,42 @@ class HelloController extends AbstractController
             $biensCAT5Finish_surface[] = $bien->getSurface();
         }
 
+        //afficher id biens de la catégorie 5
+
+        $biensCAT5_id = [];
+        $biensCAT5_id = $br->findby(['categorie' => 5]);
+
+        foreach ($biensCAT5_id as $bien) {
+            $biensCAT5Finish_id[] = $bien->getId();
+        }
+
         //recuperer la catégorie d'id 5
         $nomcategorie5 = $cr->find(5);
+
+        //------------------------------
+
+        $br = $em->getRepository(Bien::class);
+
+        $allbiens = [];
+        $allbiens = $br->findAll();
+
+        foreach ($allbiens as $bien) {
+            $allbiens_titre[] = $bien->getTitre();
+        }
+        foreach ($allbiens as $bien) {
+            $allbiens_description[] = $bien->getDescription();
+        }
+    
+        $random_keys = array_rand($allbiens_titre, 3);
 
         return $this->render('hello2.html.twig', [
 
             'nom_categorie' => $nomcategorie5->getNomCategorie(),
-            'liste_bien_cat5' => ['titre' => $biensCAT5Finish_titre, 'prix' => $biensCAT5Finish_prix, 'surface' => $biensCAT5Finish_surface]
+            'liste_bien_cat5' => ['id' => $biensCAT5Finish_id, 'titre' => $biensCAT5Finish_titre, 'prix' => $biensCAT5Finish_prix, 'surface' => $biensCAT5Finish_surface],
+            'liste_biens_all' => ['titre' => $allbiens_titre],
+            
+            'randomkey_1' => $allbiens_titre[$random_keys[0]], 'randomkey_2' => $allbiens_titre[$random_keys[1]], 'randomkey_3' => $allbiens_titre[$random_keys[2]],
+            'randomkey_desc1' => $allbiens_description[$random_keys[0]], 'randomkey_desc2' => $allbiens_description[$random_keys[1]], 'randomkey_desc3' => $allbiens_description[$random_keys[2]]
         ]);
     }
 }

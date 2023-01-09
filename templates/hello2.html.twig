@@ -6,26 +6,70 @@
 	</head>
 
 	<body>
+
 		<h1>
-			Hello , vous êtes dans la catégorie
+			Hello
+			{{ prenom|upper }}
+		</h1>
+		<h1>
+			Hello , vous êtes dans la catégorie categorie 55S
 			{{nom_categorie}}</h1>
 
 		<p>Liste Biens :</p>
-		 <ul>
-            {% for title in liste_bien_cat5.titre %}
-                <li>{{ title }}</li>
-            {% endfor %}
-        </ul>
-        <ul>
-            {% for price in liste_bien_cat5.prix %}
-                <li>Prix: {{ price }}</li>
-            {% endfor %}
-        </ul>
-        <ul>
-            {% for surface in liste_bien_cat5.surface %}
-                <li>Surface: {{ surface }}</li>
-            {% endfor %}
-        </ul>
-		
+		<ul>
+			{% for title in liste_bien_cat5.titre %}
+				<li>{{ title }}</li>
+			{% endfor %}
+		</ul>
+		<ul>
+			{% for price in liste_bien_cat5.prix %}
+				<li>Prix:
+					{{ price }}</li>
+			{% endfor %}
+		</ul>
+		<ul>
+			{% for surface in liste_bien_cat5.surface %}
+				<li>Surface:
+					{{ surface }}</li>
+			{% endfor %}
+		</ul>
+
+		<ul>
+			{% for id in liste_bien_cat5.id %}
+				<li>id:
+					{{ id }}</li>
+			{% endfor %}
+		</ul>
+
+		{#-------------------#}
+		<hr/>
+		<ul>
+			{% for titre in liste_biens_all.titre %}
+				<li>titre:
+					{{ titre }}</li>
+			{% endfor %}
+		</ul>
+		<h1>
+			RANDOM N1 :
+			{{ randomkey_1 }}
+			ET SA DESC :
+			{{randomkey_desc1}}
+		</h1>
+		<h1>
+			RANDOM N2 :
+			{{ randomkey_2 }}
+			ET SA DESC :
+			{{randomkey_desc2}}
+		</h1>
+		<h1>
+			RANDOM N3 :
+			{{ randomkey_3 }}
+			ET SA DESC :
+			{{randomkey_desc3}}
+		</h1>
+
+		<hr/>
+		<img src="assets/30VI9700.jpg" alt="image de bien"/>
+
 	</body>
 </html>
