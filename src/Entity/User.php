@@ -2,11 +2,11 @@
 
 namespace App\Entity;
 
-use App\Repository\PorteurRepository;
+use App\Repository\UserRepository;
 use Doctrine\ORM\Mapping as ORM;
 
-#[ORM\Entity(repositoryClass: PorteurRepository::class)]
-class Porteur
+#[ORM\Entity(repositoryClass: UserRepository::class)]
+class User
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]

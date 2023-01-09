@@ -8,10 +8,10 @@ controllers:
 
 accueil:
     path: /
-    controller: App\Controller\AccueilController::accueil
+    controller: App\Controller\HomeController::accueil
 homepage:
     path: /homepage
-    controller: App\Controller\AccueilController::homepage
+    controller: App\Controller\HomeController::homepage
 
 #---------- Gestion des biens et des catégories ----------#
 
@@ -62,7 +62,7 @@ inscription_user:
     controller: App\Controller\RegisterController::inscription_user
 contact:
     path: /contact
-    controller: App\Controller\AccueilController::contact
+    controller: App\Controller\HomeController::contact
 
 #---------- Biens ----------#
 

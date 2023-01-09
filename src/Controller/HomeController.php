@@ -6,11 +6,14 @@ use Doctrine\ORM\EntityManagerInterface;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
+use App\Form\ContactType;
 use Symfony\Component\Routing\Annotation\Route;
 
 use App\Entity\Bien;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 
-class AccueilController extends AbstractController
+class HomeController extends AbstractController
 {
     /**
      *@Route("/", name="accueil")
@@ -60,8 +63,23 @@ class AccueilController extends AbstractController
      *@Route("/contact", name="contact")
      */
 
-    public function contact()
+    public function contact(Request $request)
     {
+        /*
+        // Avec la classe ContactType, crée un formulaire de contact
+        $form = $this->createForm(ContactType::class);
+
+        // Gère la soumission du formulaire
+        $form->handleRequest($request);
+
+        // Si le formulaire est soumis et valide, affiche un message à l'utilisateur comme quoi c'est confirmé
+        if ($form->isSubmitted() && $form->isValid()) {
+            $this->addFlash('notice', 'Meci de nous avoir contacter. Notre équipe vous répondra dans les plus brefs délais');
+        }
+        return $this->render('contact.html.twig', [
+            'form' => $form->createView()
+        ]);*/
+
         return $this->render('contact.html.twig');
     }
 
@@ -69,8 +87,8 @@ class AccueilController extends AbstractController
      *@Route("/homepage", name="homepage")
      */
 
-     public function homepage()
-     {
-         return $this->render('homepage.html.twig');
-     }
+    public function homepage()
+    {
+        return $this->render('homepage.html.twig');
+    }
 }
