@@ -1,0 +1,56 @@
+{# Template général de la page #}
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	{{nom_categorie}}
+{% endblock %}
+
+{% block stylesheets %}
+	<link href="https://bootswatch.com/4/lumen/bootstrap.min.css" rel="stylesheet"/>
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" rel="stylesheet"/>
+{% endblock %}
+
+{% block body %}
+
+	{% include 'shared/_header.html.twig' %}
+	<div style="background-color : white">
+		<div class="container bg-light">
+
+			<div class="alert alert-dismissible alert-secondary ">
+				<h1 class="page-section-heading text-center text-black">
+					Admin
+				</h1>
+			</div>
+			<hr/>
+            <h1>Gestion des biens :</h1>
+			<a class="" href="/agence/bien/add">
+				<button type="button" class="btn btn-primary">Ajouter un bien</button>
+			</a>
+			<a class="" href="/agence/bien/modif">
+				<button type="button" class="btn btn-primary">Modifier un bien</button>
+			</a>
+			<a class="" href="/agence/bien/suppr">
+				<button type="button" class="btn btn-danger">Supprimer un bien</button>
+			</a>
+			<hr/>
+            <h1>Gestion des catégories :</h1>
+			<a class="" href="/agence/categorie/add">
+				<button type="button" class="btn btn-primary">Ajouter une categorie</button>
+			</a>
+			<a class="" href="/agence/categorie/modif">
+				<button type="button" class="btn btn-primary">Modifier une categorie</button>
+			</a>
+			<a class="" href="/agence/categorie/suppr">
+				<button type="button" class="btn btn-danger">Supprimer une categorie</button>
+			</a>
+			<hr/>
+            <h1>Gestion des statistiques :</h1>
+			<a class="" href="/statistiques">
+				<button type="button" class="btn btn-success">Accès aux statistiques</button>
+			</a>
+			<hr/>
+
+
+		</div>
+	</div>
+{% endblock %}

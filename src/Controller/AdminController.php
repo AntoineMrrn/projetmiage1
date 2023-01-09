@@ -24,5 +24,21 @@ use Doctrine\ORM\EntityManagerInterface;
 
 class AdminController extends AbstractController
 {
-    
+    /**
+     * @Route("/admin", name="admin")
+     */
+
+    public function admin(FormFactoryInterface $factory, EntityManagerInterface $em, Request $request)
+    {
+        return $this->render('admin/admin.html.twig');
+    }
+
+     /**
+     * @Route("/statistiques", name="statistiques")
+     */
+
+     public function statistiques(FormFactoryInterface $factory, EntityManagerInterface $em, Request $request)
+     {
+         return $this->render('admin/statistiques.html.twig');
+     }
 }

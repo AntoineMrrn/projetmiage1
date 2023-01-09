@@ -1,21 +1,47 @@
 {# Template général de la page #}
 {% extends 'base.html.twig' %}
+
+{% block title %}
+	Suppression un bien
+{% endblock %}
+
 {% block stylesheets %}
 	<link href="https://bootswatch.com/4/lumen/bootstrap.min.css" rel="stylesheet"/>
 	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" rel="stylesheet"/>
 {% endblock %}
 
 {% block body %}
+
 	{% include 'shared/_header.html.twig' %}
-	<h1>SUPP UN BIEN / ANNONCE NUMERO
-		{{ id }}
-	</h1>
-	<div class="row">
-		<div class="col"> Le formulaire est ici. </div>
-		<div class="col">
-			<button type="submit">
-				Supprimer un bien
-			</button>
+	<div style="background-color : white">
+		<div class="container bg-light">
+			<div class="alert alert-dismissible alert-secondary ">
+				<h1 class="page-section-heading text-center text-black">
+					<i class="fa-solid fa-arrow-down"></i>
+					Suppression un bien
+					<i class="fa-solid fa-arrow-down"></i>
+				</h1>
+			</div>
+			<a class="" href="/admin">
+				<button type="button" class="btn btn-info">Revenir au menu admin</button>
+			</a>
+
+			<form method="GET" action="/agence/bien/suppr/id_supprime	">
+				<fieldset>
+					<legend>
+						<hr/>
+						<strong>- Suppression d'un bien :</strong>
+						<hr/>
+					</legend>
+
+					<div class="form-group">
+						<label for="exampleInputEmail1" class="form-label mt-4">ID du bien</label>
+						<input type="text" class="form-control" id="id_supprime" placeholder="Entrez l'id du bien">
+					</div>
+					<button type="submit" class="btn btn-danger">Supprimer le bien</button>
+
+				</fieldset>
+			</form>
 		</div>
 	</div>
 {% endblock %}

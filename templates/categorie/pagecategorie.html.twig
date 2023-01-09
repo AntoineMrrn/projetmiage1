@@ -36,9 +36,26 @@
 
 			<div class="container bg-light">
 
-				<hr/>
-				<hr/>
-				<hr/>
+				<div class="row">
+
+					{% for reference in liste_biens.reference %}
+						<div class="col">
+							<div class="card shadow-sm">
+								<div class="card-body">
+									<p class="card-text">
+
+										<a class="" href="/bien/{{id}}">
+											<button type="button" class="btn btn-info btn-sm">Details du bien</button>
+										</a>
+
+									</p>
+									<div class="d-flex justify-content-between align-items-center"></div>
+								</div>
+							</div>
+						</div>
+					{% endfor %}
+
+				</div>
 
 				<div class="row">
 

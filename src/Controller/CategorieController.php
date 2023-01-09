@@ -100,8 +100,9 @@ class CategorieController extends AbstractController
      * @Route("/agence/categorie/suppr", name="supprcategorie")
      */
 
-    public function supprcategorie(FormFactoryInterface $factory, EntityManagerInterface $em, Request $request, $id)
+    public function supprcategorie(FormFactoryInterface $factory, EntityManagerInterface $em, Request $request)
     {
+        /*
         $builder = $factory->createBuilder(FormType::class, null, ['data_class' => Categorie::class]);
         $builder->setMethod('GET');
 
@@ -123,13 +124,17 @@ class CategorieController extends AbstractController
 
             $em->flush(); #flush peut être associé à plusieurs persist. Permettant de répercuter plusieurs mises à jour de la BDD en une seule fois.
 
-        }
+        }*/
 
-        $html = $this->render('categorie/suppr.html.twig', [
-            'id' => $id,
-            'formView' => $formView
-        ]);
+        return $this->render('categorie/suppr.html.twig');
+    }
 
-        return new Response($html);
+    /**
+     * @Route("/agence/categorie/suppr/fini", name="supprcategoriefini")
+     */
+
+    public function supprcategoriefini(FormFactoryInterface $factory, EntityManagerInterface $em, Request $request, $id)
+    {
+        return $this->render('categorie/supprfini.html.twig');
     }
 }

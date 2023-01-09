@@ -56,26 +56,35 @@ addcategorie:
     controller: App\Controller\CategorieController::addcategorie
 
 modifbien:
-    path: /agence/bien/modif/{id}
+    path: /agence/bien/modif/
     controller: App\Controller\BienController::modifbien
     defaults:
         id: 0
+    requirements:
+        id: \d+
 modifcategorie:
-    path: /agence/categorie/modif/{id}
+    path: /agence/categorie/modif
     controller: App\Controller\CategorieController::modifcategorie
     defaults:
         id: 0
-supprbien:
-    path: /agence/bien/suppr/{id}
-    controller: App\Controller\BienController::supprbien
-    defaults:
-        id: 0
-supprcategorie:
-    path: /agence/categorie/suppr/{id}
-    controller: App\Controller\CategorieController::supprcategorie
-    defaults:
-        id: 0
+    requirements:
+        id: \d+
 
+supprbien:
+    path: /agence/bien/suppr
+    controller: App\Controller\BienController::supprbien
+supprbienfini:
+    path: /agence/bien/suppr/fini
+    controller: App\Controller\BienController::supprbienfini
+
+supprcategorie:
+    path: /agence/categorie/suppr
+    controller: App\Controller\CategorieController::supprcategorie
+        
+supprcategoriefini:
+    path: /agence/categorie/suppr/fini
+    controller: App\Controller\CategorieController::supprcategoriefini
+    
 #---------- Logins ----------#
 
 login_user:
@@ -95,6 +104,8 @@ bien:
     controller: App\Controller\BienController::bien
     defaults:
         id: 0
+    requirements:
+        id: \d+
 
 #---------- Catégories ----------#
 
@@ -103,3 +114,14 @@ categorie:
     controller: App\Controller\CategorieControllerTypes::categorie
     defaults:
         id: 0
+    requirements:
+        id: \d+
+
+#---------- Admin ----------#
+
+admin:
+    path: /admin
+    controller: App\Controller\AdminController::admin
+stats:
+    path: /stats
+    controller: App\Controller\AdminController::stats

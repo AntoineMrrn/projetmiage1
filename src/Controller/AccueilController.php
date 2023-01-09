@@ -51,7 +51,8 @@ class AccueilController extends AbstractController
 
             'randomkey_titre1' => $allbiens_titre[$random_keys[0]], 'randomkey_titre2' => $allbiens_titre[$random_keys[1]], 'randomkey_titre3' => $allbiens_titre[$random_keys[2]],
             'randomkey_desc1' => $allbiens_description[$random_keys[0]], 'randomkey_desc2' => $allbiens_description[$random_keys[1]], 'randomkey_desc3' => $allbiens_description[$random_keys[2]],
-            'randomkey_id1' => $allbiens_id[$random_keys[0]], 'randomkey_id2' => $allbiens_id[$random_keys[1]], 'randomkey_id3' => $allbiens_id[$random_keys[2]]
+            'randomkey_id1' => $allbiens_id[$random_keys[0]], 'randomkey_id2' => $allbiens_id[$random_keys[1]], 'randomkey_id3' => $allbiens_id[$random_keys[2]],
+            'randomkey_ref1' => $allbiens_references[$random_keys[0]], 'randomkey_ref2' => $allbiens_references[$random_keys[1]], 'randomkey_ref3' => $allbiens_references[$random_keys[2]]
         ]);
     }
 
