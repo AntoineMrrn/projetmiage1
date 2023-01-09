@@ -20,17 +20,17 @@ use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 
+use Knp\Component\Pager\PaginatorInterface;
+
 use Doctrine\ORM\EntityManagerInterface;
 
 class CategorieControllerTypes extends AbstractController
 {
-    //------------------------------------------------------------------------------------------------------------------------//
-
     /**
      * @Route("/categorie/{id<\d+>?0}", name="categorie")
      */
 
-    public function categorie(EntityManagerInterface $em, $id)
+    public function categorie(EntityManagerInterface $em, $id, PaginatorInterface $paginator, Request $request)
     {
         // Récupère le repository de Categorie et Bien
         $cr = $em->getRepository(Categorie::class);
@@ -38,49 +38,23 @@ class CategorieControllerTypes extends AbstractController
 
         // Récupère la catégorie d'id ID
         $categorie = $cr->find($id);
-        if ($categorie == null) {
+
+        $biens = $br->findby(['categorie' => $id]);
+        if ($biens == null) {
             return $this->render('404.html.twig');
         }
-        $categorie_id = $categorie->getId();
 
-
-        // Récupère le titre des biens de la catégorie ID
-        $biens_titre = [];
-        $biens_titre = $br->findby(['categorie' => $id]);
-
-        foreach ($biens_titre as $bien) {
-            $liste_biens_titre[] = $bien->getTitre();
-        }
-
-        // Récupère le prix des biens de la catégorie ID
-        $biens_prix = [];
-        $biens_prix = $br->findby(['categorie' => $id]);
-
-        foreach ($biens_prix as $bien) {
-            $liste_biens_prix[] = $bien->getPrix();
-        }
-
-        // Récupère l'id des biens de la catégorie ID
-        $biens_id = [];
-        $biens_id = $br->findby(['categorie' => $id]);
-
-        foreach ($biens_id as $bien) {
-            $liste_biens_id[] = $bien->getId();
-        }
-
-        // Récupère l'id des biens de la catégorie ID
-        $biens = [];
-        $biens = $br->findby(['categorie' => $id]);
-
-        foreach ($biens as $bien) {
-            $biens_données[] = $bien->getTitre();
-        }
+        $biens_pagination = $paginator->paginate(
+            $biens, /* query NOT result */
+            $request->query->getInt('page', 1), /*page number*/
+            3 /*limit per page*/
+        );
 
         // Renvoie la réponse contenant le rendu de la vue "categorie/pagecategorie.html.twig" et les données passées à la vue
         return $this->render('categorie/pagecategorie.html.twig', [
             'nom_categorie' => $categorie->getNomCategorie(),
 
-            'liste_biens' => ['titre' => $liste_biens_titre, 'prix' => $liste_biens_prix, 'id' => $liste_biens_id],
+            'biens' => $biens_pagination,
         ]);
     }
 }

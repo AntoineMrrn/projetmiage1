@@ -30,41 +30,54 @@ class CategorieController extends AbstractController
 
     public function addcategorie(FormFactoryInterface $factory, EntityManagerInterface $em, Request $request)
     {
+        # Création du formulaire de création de catégorie
         $builder = $factory->createBuilder(FormType::class, null, ['data_class' => Categorie::class]);
+
+        # Définition de la méthode HTTP du formulaire en GET
         $builder->setMethod('GET');
 
+        # Récupération du formulaire
         $form = $builder->getForm();
+
+        # Ajout d'un champ de saisie de texte pour le nom de la catégorie au formulaire
         $form->add('NomCategorie', TextType::class, ['required' => true, 'label' => 'Nom de la catégorie *', 'attr' => ['class' => 'formcontrol', 'placeholder' => 'Tapez un nom pour cette catégorie']]);
 
+        # Création de la vue du formulaire
         $formView = $form->createView();
 
         $c = new Categorie();
 
+        # Gestion de la soumission du formulaire
         $form->handleRequest($request);
 
+        # Vérification de la validité du formulaire et de l'existence d'une soumission
         if ($form->isSubmitted() && $form->isValid()) {
+
+            # Récupération des données du formulaire
             $data = $form->getData();
+
+            # Attribution du nom de la catégorie à l'objet de la catégorie
             $c->setNomCategorie($data->getNomCategorie());
 
+            # Enregistrement de la nouvelle catégorie en base de données
             $em->persist($c);
 
-            $em->flush(); #flush peut être associé à plusieurs persist. Permettant de répercuter plusieurs mises à jour de la BDD en une seule fois.
-
+            # Mise à jour de la base de données
+            $em->flush();
         }
 
-        $html = $this->render('categorie/add.html.twig', [
+        return $this->render('categorie/add.html.twig', [
             'formView' => $formView
         ]);
-
-        return new Response($html);
     }
 
     /**
      * @Route("/agence/categorie/modif/{id}", name="modifcategorie")
      */
 
-    public function modifcategorie(FormFactoryInterface $factory, EntityManagerInterface $em, Request $request, $id)
+    public function modifcategorie(FormFactoryInterface $factory, EntityManagerInterface $em, Request $request)
     {
+        /*
         $builder = $factory->createBuilder(FormType::class, null, ['data_class' => Categorie::class]);
         $builder->setMethod('GET');
 
@@ -87,13 +100,9 @@ class CategorieController extends AbstractController
             $em->flush(); #flush peut être associé à plusieurs persist. Permettant de répercuter plusieurs mises à jour de la BDD en une seule fois.
 
         }
+        */
 
-        $html = $this->render('categorie/modif.html.twig', [
-            'id' => $id,
-            'formView' => $formView
-        ]);
-
-        return new Response($html);
+        return $this->render('categorie/modif.html.twig');
     }
 
     /**

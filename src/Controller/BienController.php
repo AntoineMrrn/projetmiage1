@@ -5,7 +5,7 @@ namespace App\Controller;
 use App\Repository\CategorieRepository;
 use App\Entity\Categorie;
 use App\Entity\Bien;
-
+use App\Form\BienType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 use Symfony\Component\Form\FormFactoryInterface;
@@ -66,54 +66,19 @@ class BienController extends AbstractController
     //---------- Gestion des biens ---------//
 
     /**
-     * @Route("/agence/bien/add", name="addbien")
+     * @Route("/agence/bien/add", name="addbien", methods={"GET","POST"}))
      */
 
     public function addbien(FormFactoryInterface $factory, EntityManagerInterface $em, Request $request)
     {
-        // Création d'un nouvel objet FormBuilder avec la factory de formulaire et la classe de données Bien
-        $builder = $factory->createBuilder(FormType::class, null, ['data_class' => Bien::class]);
+        /*
+        $bien = new Bien;
+        $form = $this->createForm(BienType::class, $bien);
 
-        // Définition de la méthode d'envoi du formulaire en GET
-        $builder->setMethod('GET');
-
-        // Récupération du formulaire créé par le FormBuilder
-        $form = $builder->getForm();
-
-        $form->add('titre', TextType::class, ['required' => true, 'label' => 'Titre du bien *', 'attr' => ['class' => 'formcontrol', 'placeholder' => 'Tapez un titre pour ce bien']])
-            ->add('prix', IntegerType::class, ['required' => true, 'label' => 'Prix du bien en euro (€) *', 'attr' => ['class' => 'formcontrol', 'placeholder' => 'Tapez un prix pour ce bien']])
-            ->add('cp', IntegerType::class, ['required' => true, 'label' => 'Code postal du bien *', 'attr' => ['class' => 'formcontrol', 'placeholder' => 'Tapez un code postal pour ce bien']])
-            ->add('description', TextAreaType::class, ['required' => false, 'label' => 'Description du bien ', 'attr' => ['class' => 'formcontrol', 'placeholder' => 'Tapez une description pour ce bien']])
-            ->add('categorie', EntityType::class, ['required' => true, 'label' => 'Catégorie du bien *', 'class' => Categorie::class, 'choice_label' => 'nom_categorie'])
-            ->add('surface', IntegerType::class, ['required' => false, 'label' => 'Surface en km² du bien ', 'attr' => ['class' => 'formcontrol', 'placeholder' => 'Tapez une surface en km² pour ce bien']])
-            ->add('reference', TextAreaType::class, ['required' => false, 'label' => 'Réference du bien ', 'attr' => ['class' => 'formcontrol', 'placeholder' => 'Tapez une réference pour ce bien']])
-            ->add('type', TextAreaType::class, ['required' => false, 'label' => 'Type du bien ', 'attr' => ['class' => 'formcontrol', 'placeholder' => 'Tapez un type (location, vente...) pour ce bien']])
-            ->add('localisation', TextAreaType::class, ['required' => false, 'label' => 'Localisation du bien ', 'attr' => ['class' => 'formcontrol', 'placeholder' => 'Tapez une localisation pour ce bien']]);
-
-        $formView = $form->createView();
-
-        $b = new Bien();
-
-        $form->handleRequest($request);
-
-        // Vérification si le formulaire a été soumis et s'il est valide + Mise à jour des propriétés de l'objet Bien avec les valeurs du formulaire
-        if ($form->isSubmitted() && $form->isValid()) {
-            $data = $form->getData();
-            $b->setTitre($data->getTitre());
-            $b->setPrix($data->getPrix());
-            $b->setCp($data->getCp());
-            $b->setDescription($data->getDescription());
-            $b->setCategorie($data->getCategorie());
-            $b->setSurface($data->getSurface());
-            $b->setReference($data->getReference());
-            $b->setType($data->getType());
-            $b->setLocalisation($data->getLocalisation());
-
-            $em->persist($b);
-
-            $em->flush(); #flush peut être associé à plusieurs persist. Permettant de répercuter plusieurs mises à jour de la BDD en une seule fois.
-
-        }
+        return $this->render('bien/add.html.twig', [
+            'form' => $form-> createView()
+        ]);
+        */
 
         return $this->render('bien/add.html.twig');
     }
@@ -124,10 +89,15 @@ class BienController extends AbstractController
 
     public function modifbien(FormFactoryInterface $factory, EntityManagerInterface $em, Request $request)
     {
+
         /*
+        // Création d'un nouvel objet FormBuilder avec la factory de formulaire et la classe de données Bien
         $builder = $factory->createBuilder(FormType::class, null, ['data_class' => Bien::class]);
+
+        // Définition de la méthode d'envoi du formulaire en GET
         $builder->setMethod('GET');
 
+        // Récupération du formulaire créé par le FormBuilder
         $form = $builder->getForm();
         $form->add('titre', TextType::class, ['required' => true, 'label' => 'Titre du bien *', 'attr' => ['class' => 'formcontrol', 'placeholder' => 'Tapez un titre pour ce bien']])
             ->add('prix', IntegerType::class, ['required' => true, 'label' => 'Prix du bien en euro (€) *', 'attr' => ['class' => 'formcontrol', 'placeholder' => 'Tapez un prix pour ce bien']])
@@ -146,6 +116,7 @@ class BienController extends AbstractController
 
         $form->handleRequest($request);
 
+        // Vérification si le formulaire a été soumis et s'il est valide + Mise à jour des propriétés de l'objet Bien avec les valeurs du formulaire
         if ($form->isSubmitted() && $form->isValid()) {
             $data = $form->getData();
             $b->setTitre($data->getTitre());
@@ -161,8 +132,8 @@ class BienController extends AbstractController
 
             $em->flush(); #flush peut être associé à plusieurs persist. Permettant de répercuter plusieurs mises à jour de la BDD en une seule fois.
 
-        }
-        */
+        }*/
+
 
         return $this->render('bien/modif.html.twig');
     }
@@ -202,7 +173,7 @@ class BienController extends AbstractController
      * @Route("/agence/bien/suppr/fini", name="supprbienfini")
      */
 
-    public function supprbienfini(FormFactoryInterface $factory, EntityManagerInterface $em, Request $request, $id)
+    public function supprbienfini(FormFactoryInterface $factory, EntityManagerInterface $em, Request $request)
     {
         return $this->render('bien/supprfini.html.twig');
     }
