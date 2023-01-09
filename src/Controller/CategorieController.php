@@ -124,7 +124,13 @@ class CategorieController extends AbstractController
 
             $em->flush(); #flush peut être associé à plusieurs persist. Permettant de répercuter plusieurs mises à jour de la BDD en une seule fois.
 
-        }*/
+        }
+
+        return $this->render('categorie/suppr.html.twig', [
+            'id' => $id,
+            'formView' => $formView
+        ]);
+        */
 
         return $this->render('categorie/suppr.html.twig');
     }

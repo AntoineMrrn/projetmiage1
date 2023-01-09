@@ -64,4 +64,13 @@ class AccueilController extends AbstractController
     {
         return $this->render('contact.html.twig');
     }
+
+    /**
+     *@Route("/homepage", name="homepage")
+     */
+
+     public function homepage()
+     {
+         return $this->render('homepage.html.twig');
+     }
 }

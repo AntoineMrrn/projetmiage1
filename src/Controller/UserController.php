@@ -8,7 +8,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class UserController extends AbstractController
 {
     /**
-     *@Route("/", name="accueil")
+     *@Route("homepage", name="homepage")
      */
     public function homepage()
     {
